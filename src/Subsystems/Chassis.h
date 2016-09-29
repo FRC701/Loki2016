@@ -13,6 +13,7 @@
 #define CHASSIS_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include <string>
 
 /**
  *
@@ -42,6 +43,14 @@ public:
 
 	// Drive the robot left and right
 	void SetTankDrive(double left, double right);
+
+	void SetShifter(char gear);
+
+	bool IsShifterHigh();
+
+	void SetKickstand(char position);
+
+	bool IsKickstandIn();
 
 };
 

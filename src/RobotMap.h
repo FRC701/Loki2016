@@ -51,7 +51,7 @@ public:
 
 	//..........chassis..........
 
-private:
+/*private:
 	const int kLeft1ID = 1;
 	const int kLeft2ID = 2;
 	const int kLeft3ID = 3;
@@ -72,7 +72,7 @@ private:
 
 	const int kLifterF = 1;
 	const int kLifterR = 2;
-
+*/
 	static void init();
 
 

@@ -40,43 +40,43 @@ void RobotMap::init() {
 
     //..........chassis..........
 
-    chassisLeft1Wheel.reset(new CANTalon(kLeft1ID));
+    chassisLeft1Wheel.reset(new CANTalon(1/*kLeft1ID*/));
     lw->AddActuator("Chassis", "Left1Wheel", chassisLeft1Wheel);
     
-    chassisLeft2Wheel.reset(new CANTalon(kLeft2ID));
+    chassisLeft2Wheel.reset(new CANTalon(2/*kLeft2ID*/));
     lw->AddActuator("Chassis", "Left2Wheel", chassisLeft2Wheel);
 
-    chassisLeft3Wheel.reset(new CANTalon(kLeft3ID));
+    chassisLeft3Wheel.reset(new CANTalon(3/*kLeft3ID*/));
     lw->AddActuator("Chassis", "Left3Wheel", chassisLeft3Wheel);
 
-    chassisRight1Wheel.reset(new CANTalon(kRight1ID));
+    chassisRight1Wheel.reset(new CANTalon(4/*kRight1ID*/));
     lw->AddActuator("Chassis", "Right1Wheel", chassisRight1Wheel);
 
-    chassisRight2Wheel.reset(new CANTalon(kRight2ID));
+    chassisRight2Wheel.reset(new CANTalon(5/*kRight2ID*/));
     lw->AddActuator("Chassis", "Right2Wheel", chassisRight2Wheel);
 
-    chassisRight3Wheel.reset(new CANTalon(kRight3ID));
+    chassisRight3Wheel.reset(new CANTalon(6/*kRight3ID*/));
     lw->AddActuator("Chassis", "Right3Wheel", chassisRight3Wheel);
 
-    chassisShifter.reset(new DoubleSolenoid(kShifterF,kShifterR));
+    chassisShifter.reset(new DoubleSolenoid(0,3/*kShifterF,kShifterR*/));
     lw->AddActuator("Chassis", "Shifter", chassisShifter);
 
-    chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
+    chassisKickstand.reset(new DoubleSolenoid(4,5/*kKickstandF,kKickstandR*/));
     lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
 
 
     //..........shooter..........
 
-    shooterLeftFlywheel.reset(new CANTalon(kLeftFlywheelID));
+    shooterLeftFlywheel.reset(new CANTalon(11/*kLeftFlywheelID*/));
     lw->AddActuator("Shooter", "LeftFlywheel", shooterLeftFlywheel);
 
-    shooterRightFlywheel.reset(new CANTalon(kRightFlywheelID));
+    shooterRightFlywheel.reset(new CANTalon(12/*kRightFlywheelID*/));
     lw->AddActuator("Shooter", "RightFlywheel", shooterRightFlywheel);
 
-    shooterRoller.reset(new CANTalon(kRollerID));
+    shooterRoller.reset(new CANTalon(13/*kRollerID*/));
     lw->AddActuator("Shooter", "Roller", shooterRoller);
 
-    shooterLifter.reset(new CANTalon(kLifterF, kLifterR));
+    shooterLifter.reset(new CANTalon(1,2/*kLifterF, kLifterR*/));
     lw->AddActuator("Shooter", "Lifter", shooterLifter);
 
 }
