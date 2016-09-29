@@ -39,16 +39,16 @@ Chassis::Chassis() : Subsystem("Chassis") {
     right1Wheel->SetInverted(true);
 
     left2Wheel->SetControlMode(CANTalon::kFollower);
-    //left2Wheel->Set(kLeft1Talon)
+    left2Wheel->Set(1/*kLeft1Talon*/);
 
     left3Wheel->SetControlMode(CANTalon::kFollower);
-    //left3Wheel->Set(kLeft1Talon)
+    left3Wheel->Set(1/*kLeft1Talon*/);
 
     right2Wheel->SetControlMode(CANTalon::kFollower);
-    //right2Wheel->Set(kRight1Talon)
+    right2Wheel->Set(4/*kRight1Talon*/);
 
     right3Wheel->SetControlMode(CANTalon::kFollower);
-    //right3Wheel->Set(kRight1Talon)
+    right3Wheel->Set(4/*kRight1Talon*/);
 
 
 }
@@ -81,7 +81,7 @@ void Chassis::SetShifter(char gear)
 		Robot::chassis->shifter->Set(DoubleSolenoid::kReverse);
 }
 
-void bool Chassis::IsShifterHigh()
+bool Chassis::IsShifterHigh()
 {
 	bool status;
 	if(Robot::chassis->shifter->Get() == DoubleSolenoid::kForward)
@@ -102,7 +102,7 @@ void Chassis::SetKickstand(char position)
 		Robot::chassis->shifter->Set(DoubleSolenoid::kReverse);
 }
 
-void bool Chassis::IsKickstandIn()
+bool Chassis::IsKickstandIn()
 {
 	bool status;
 	if(Robot::chassis->kickstand->Get() == DoubleSolenoid::kForward)
