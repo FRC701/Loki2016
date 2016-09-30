@@ -32,28 +32,28 @@ void RobotMap::init() {
 
     //..........chassis..........
 
-    chassisLeft1Wheel.reset(new CANTalon(1/*kLeft1ID*/));
+    chassisLeft1Wheel.reset(new CANTalon(kLeft1ID));
     lw->AddActuator("Chassis", "Left1Wheel", chassisLeft1Wheel);
     
-    chassisLeft2Wheel.reset(new CANTalon(2/*kLeft2ID*/));
+    chassisLeft2Wheel.reset(new CANTalon(kLeft2ID));
     lw->AddActuator("Chassis", "Left2Wheel", chassisLeft2Wheel);
 
-    chassisLeft3Wheel.reset(new CANTalon(3/*kLeft3ID*/));
+    chassisLeft3Wheel.reset(new CANTalon(kLeft3ID));
     lw->AddActuator("Chassis", "Left3Wheel", chassisLeft3Wheel);
 
-    chassisRight1Wheel.reset(new CANTalon(4/*kRight1ID*/));
+    chassisRight1Wheel.reset(new CANTalon(kRight1ID));
     lw->AddActuator("Chassis", "Right1Wheel", chassisRight1Wheel);
 
-    chassisRight2Wheel.reset(new CANTalon(5/*kRight2ID*/));
+    chassisRight2Wheel.reset(new CANTalon(kRight2ID));
     lw->AddActuator("Chassis", "Right2Wheel", chassisRight2Wheel);
 
-    chassisRight3Wheel.reset(new CANTalon(6/*kRight3ID*/));
+    chassisRight3Wheel.reset(new CANTalon(kRight3ID));
     lw->AddActuator("Chassis", "Right3Wheel", chassisRight3Wheel);
 
-    chassisShifter.reset(new DoubleSolenoid(0,3/*kShifterF,kShifterR*/));
+    chassisShifter.reset(new DoubleSolenoid(kShifterF,kShifterR));
     lw->AddActuator("Chassis", "Shifter", chassisShifter);
 
-    chassisKickstand.reset(new DoubleSolenoid(4,5/*kKickstandF,kKickstandR*/));
+    chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
     lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
 
 }

@@ -4,6 +4,7 @@ ToggleKickstand::ToggleKickstand()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
@@ -15,18 +16,16 @@ void ToggleKickstand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ToggleKickstand::Execute()
 {
-	if(Robot::chassis->IsKickstandIn())
-		Robot::chassis->SetShifter('o');
-
-	else if(!Robot::chassis->IsKickstandIn())
-		Robot::chassis->SetShifter('h');
+	Chassis::KickstandValue value
+		= Robot::chassis->IsKickstandIn() ? Chassis::kOut : Chassis::kIn;
+	Robot::chassis->SetKickstand(value);
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ToggleKickstand::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
