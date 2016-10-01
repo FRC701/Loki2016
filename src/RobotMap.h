@@ -23,6 +23,9 @@
 class RobotMap {
 public:
 
+	//..........Talons and Solenoids..........
+
+
 	//..........chassis..........
 
 	static std::shared_ptr<CANTalon> chassisLeft1Wheel;
@@ -39,6 +42,16 @@ public:
 
 	static std::shared_ptr<CANTalon> intakeHorizontalBands;
 	static std::shared_ptr<CANTalon> intakeVerticalBands;
+
+	//..........shooter..........
+
+	static std::shared_ptr<CANTalon> shooterLeftFlywheel;
+	static std::shared_ptr<CANTalon> shooterRightFlywheel;
+	static std::shared_ptr<CANTalon> shooterRoller;
+
+	static std::shared_ptr<DoubleSolenoid> shooterLifter;
+
+	//..........IDs..........
 
 
 	//..........chassis..........
@@ -60,6 +73,14 @@ public:
 	static const int kHoriBandsID = 7;
 	static const int kVerBandsID = 8;
 
+
+	//..........shooter..........
+
+	static const int kLeftFlywheelID = 11;
+	static const int kRightFlywheelID = 12;
+	static const int kRollerID = 13;
+	static const int kLifterF = 1;
+	static const int kLifterR = 2;
 
 	static void init();
 
