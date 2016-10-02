@@ -11,6 +11,8 @@ Shooter::Shooter() :
 	lifter = RobotMap::shooterLifter;
 
 	rightFlywheel->SetInverted(true);
+
+	SetLifter(kDown);
 }
 
 void Shooter::InitDefaultCommand()
@@ -30,7 +32,7 @@ void Shooter::SetLifter(LifterValue value)
 	lifter->Set(static_cast<DoubleSolenoid::Value>(value));
 }
 
-bool Shooter::IsLifterHigh()
+bool Shooter::IsLifterUp()
 {
 	return lifter->Get() == DoubleSolenoid::kForward;
 }
