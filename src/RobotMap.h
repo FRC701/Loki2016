@@ -46,12 +46,19 @@ public:
 	static const int kRight2ID = 5;
 	static const int kRight3ID = 6;
 
+	static const int kArmLeft  = 20;
+	static const int kArmRight = 21;
+
 	static const int kShifterF = 0;
 	static const int kShifterR = 3;
 	static const int kKickstandF = 4;
 	static const int kKickstandR = 5;
 
 	// */
+	//..........arms..........
+	static std::shared_ptr<CANTalon> armLeft;
+	static std::shared_ptr<CANTalon> armRight;
+
 	static void init();
 
 
