@@ -1,10 +1,12 @@
 #ifndef ArmUp_H
 #define ArmUp_H
 
-#include "../CommandBase.h"
-#include "WPILib.h"
 
-class ArmUp: public CommandBase
+#include "Commands/Subsystem.h"
+#include "../Robot.h"
+
+
+class ArmUp: public Command
 {
 public:
 	ArmUp();

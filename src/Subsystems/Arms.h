@@ -9,12 +9,14 @@ class Arms: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	std::shared_ptr<CANTalon> Armleft;
-	std::shared_ptr<CANTalon> Armright;
+	std::shared_ptr<CANTalon> armleft;
+	std::shared_ptr<CANTalon> armright;
 
 public:
 	Arms();
 	void InitDefaultCommand();
+	void ArmsUp();
+	void ArmDown();
 };
 
 #endif

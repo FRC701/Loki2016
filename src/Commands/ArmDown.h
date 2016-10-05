@@ -1,10 +1,10 @@
 #ifndef ArmDown_H
 #define ArmDown_H
 
-#include "../CommandBase.h"
+#include "../Robot.h"
 #include "WPILib.h"
 
-class ArmDown: public CommandBase
+class ArmDown: public Command
 {
 public:
 	ArmDown();

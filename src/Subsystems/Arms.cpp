@@ -4,8 +4,8 @@
 Arms::Arms() :
 		Subsystem("ExampleSubsystem")
 {
-	 Armleft = RobotMap::armLeft;
-     Armright = RobotMap::armRight;
+	 armleft = RobotMap::armLeft;
+     armright = RobotMap::armRight;
 }
 
 void Arms::InitDefaultCommand()
@@ -17,3 +17,15 @@ void Arms::InitDefaultCommand()
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+
+void Arms::ArmsUp(){
+
+	armleft->Set(1.0);
+	armright->Set(1.0);
+}
+
+void Arms::ArmDown(){
+
+	armleft->Set(-1.0);
+	armright->Set(-1.0);
+}
