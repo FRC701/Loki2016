@@ -15,8 +15,8 @@ private:
 public:
 	Arms();
 	void InitDefaultCommand();
-	void ArmsUp();
-	void ArmDown();
+	void ArmsOn(double speed);
+
 };
 
 #endif
