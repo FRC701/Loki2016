@@ -2,9 +2,9 @@
 #include "SetLifter.h"
 #include "ShooterControl.h"
 
-PrepShooter::PrepShooter(double mSpeed)
+PrepShooter::PrepShooter(double speed)
 {
-	speed = mSpeed;
+	mSpeed = speed;
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -18,7 +18,7 @@ PrepShooter::PrepShooter(double mSpeed)
 
 	// TODO Intake Arm Level
 	AddSequential(new SetLifter(Shooter::kUp));
-	AddSequential(new ShooterControl(speed));
+	AddSequential(new ShooterControl(mSpeed));
 
 
 	// A command group will require all of the subsystems that each member
