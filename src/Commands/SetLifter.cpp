@@ -1,8 +1,9 @@
 #include "SetLifter.h"
+#include "../Subsystems/Shooter.h"
 
-SetLifter::SetLifter(Shooter::LifterValue)
+SetLifter::SetLifter(Shooter::LifterValue lifterValue)
+: mLifterValue(lifterValue)
 {
-mLifterValue = Shooter::LifterValue;
 
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -17,7 +18,7 @@ void SetLifter::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void SetLifter::Execute()
 {
-	Robot::shooter(mLifterValue);
+	Robot::shooter->SetLifter(mLifterValue);
 }
 
 // Make this return true when this Command no longer needs to run execute()
