@@ -4,6 +4,7 @@ ArmUp::ArmUp()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::arms.get());
 }
 
 // Called just before this Command runs the first time
@@ -15,12 +16,13 @@ void ArmUp::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmUp::Execute()
 {
-
+	Robot::arms->ArmsUp();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmUp::IsFinished()
 {
+
 	return false;
 }
 
