@@ -2,7 +2,7 @@
 #define ToggleLifter_H
 
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+#include "../Robot.h"
 
 class ToggleLifter: public Command
 {

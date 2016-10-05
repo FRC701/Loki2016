@@ -2,12 +2,13 @@
 #define SetLifter_H
 
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+#include "../Subsystems/Shooter.h"
+#include "../Robot.h"
 
 class SetLifter: public Command
 {
 public:
-	SetLifter(Shooter::LifterValue);
+	SetLifter(Shooter::LifterValue lifterValue);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,7 +16,7 @@ public:
 	void Interrupted();
 
 private:
-	Shooter::LifterValue mLifterValue
+	Shooter::LifterValue mLifterValue;
 };
 
 
