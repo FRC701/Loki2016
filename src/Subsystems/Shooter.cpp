@@ -1,5 +1,6 @@
 #include "Shooter.h"
 #include "../RobotMap.h"
+#include "../Commands/DefaultShooter.h"
 
 Shooter::Shooter() :
   Subsystem("Shooter"),

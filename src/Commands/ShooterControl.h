@@ -2,7 +2,7 @@
 #define ShooterControl_H
 
 #include "Commands/Subsystem.h"
-#include "WPILib.h"
+#include "../Robot.h"
 
 class ShooterControl: public Command
 {
