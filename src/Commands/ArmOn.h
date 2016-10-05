@@ -1,20 +1,21 @@
-#ifndef ArmUp_H
-#define ArmUp_H
+#ifndef ArmOn_H
+#define ArmOn_H
 
-
-#include "Commands/Subsystem.h"
 #include "../Robot.h"
+#include "WPILib.h"
 
-
-class ArmUp: public Command
+class ArmOn: public Command
 {
 public:
-	ArmUp();
+	ArmOn(double speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+
+private:
+	double mspeed;
 };
 
 #endif

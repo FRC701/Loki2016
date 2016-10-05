@@ -1,40 +1,41 @@
-#include "ArmDown.h"
+#include "ArmOn.h"
 
-
-ArmDown::ArmDown()
+ArmOn::ArmOn(double speed)
 {
+mspeed == speed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::arms.get());
 }
 
 // Called just before this Command runs the first time
-void ArmDown::Initialize()
+void ArmOn::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmDown::Execute()
+void ArmOn::Execute()
 {
- Robot::arms->ArmDown();
+ Robot::arms->ArmsOn(mspeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmDown::IsFinished()
+bool ArmOn::IsFinished()
 {
+
 	return false;
 }
 
 // Called once after isFinished returns true
-void ArmDown::End()
+void ArmOn::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmDown::Interrupted()
+void ArmOn::Interrupted()
 {
 
 }

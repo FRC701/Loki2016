@@ -6,6 +6,9 @@ Arms::Arms() :
 {
 	 armleft = RobotMap::armLeft;
      armright = RobotMap::armRight;
+     armright->SetInverted(true);
+
+
 }
 
 void Arms::InitDefaultCommand()
@@ -18,14 +21,9 @@ void Arms::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Arms::ArmsUp(){
+void Arms::ArmsOn(double speed){
 
-	armleft->Set(1.0);
-	armright->Set(1.0);
+	armleft->Set(speed);
+	armright->Set(speed);
 }
 
-void Arms::ArmDown(){
-
-	armleft->Set(-1.0);
-	armright->Set(-1.0);
-}
