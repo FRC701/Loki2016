@@ -22,7 +22,7 @@ public:
 
 	void SetLifter(LifterValue value);
 
-	bool IsLifterUp();
+	bool IsLifterUp() const;
 
 	void SetShooter(double speed);
 

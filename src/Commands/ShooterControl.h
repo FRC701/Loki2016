@@ -7,7 +7,7 @@
 class ShooterControl: public Command
 {
 public:
-	ShooterControl(double mSpeed);
+	ShooterControl(double speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,7 +15,7 @@ public:
 	void Interrupted();
 
 private:
-	double speed;
+	double mSpeed;
 
 };
 

@@ -13,6 +13,10 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+
+private:
+	Shooter::LifterValue mLifterValue
 };
+
 
 #endif
