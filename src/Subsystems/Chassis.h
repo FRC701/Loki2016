@@ -49,6 +49,10 @@ public:
 
 	void SetArcadeDrive(double throttle, double wheel);
 
+	void GetLeftSpeed(double throttle);
+
+	void GetRightSpeed(double throttle);
+
 	void SetShifter(ShifterValue value);
 
 	bool IsShifterHigh();
