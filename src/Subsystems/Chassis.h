@@ -47,6 +47,8 @@ public:
 	// Drive the robot left and right
 	void SetTankDrive(double left, double right);
 
+	void SetArcadeDrive(double throttle, double wheel);
+
 	void SetShifter(ShifterValue value);
 
 	bool IsShifterHigh();

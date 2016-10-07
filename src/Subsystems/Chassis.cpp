@@ -74,6 +74,11 @@ void Chassis::SetTankDrive(double left, double right)
 	right1Wheel->Set(right);
 }
 
+void Chassis::SetArcadeDrive(double throttle, double wheel)
+{
+// TODO
+}
+
 void Chassis::SetShifter(ShifterValue value)
 {
 	shifter->Set(static_cast<DoubleSolenoid::Value>(value));
