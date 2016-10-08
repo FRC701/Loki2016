@@ -68,62 +68,11 @@ void Chassis::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Chassis::SetTankDrive(double left, double right)
+void Chassis::SetDrive(double left, double right)
 {
-	left1Wheel->Set(left);
-	right1Wheel->Set(right);
+	Robot::chassis->left1Wheel->Set(left);
+	Robot::chassis->right1Wheel->Set(right);
 }
-
-void Chassis::GetLeftSpeed(double throttle)
-{
-	double leftSpeed = throttle;
-	double wheel = Robot::oi->GetDriverWheel();
-	if(wheel > 0)
-	{
-		leftSpeed = throttle * (1/wheel);
-	}
-	else if(wheel < 0)
-	{
-		leftSpeed = throttle * wheel;
-	}
-	left1Wheel->Set(leftSpeed);
-}
-
-void Chassis::GetRightSpeed(double throttle)
-{
-	double rightSpeed = throttle;
-	double wheel = Robot::oi->GetDriverWheel();
-	if(wheel > 0)
-	{
-		rightSpeed = throttle * (1/wheel);
-	}
-	else if(wheel < 0)
-	{
-		rightSpeed = throttle * wheel;
-	}
-	left1Wheel->Set(rightSpeed);
-}
-
-/*
-void Chassis::SetArcadeDrive(double throttle, double wheel)
-{
-	double rightSpeed = throttle;
-	double leftSpeed = throttle;
-	if(wheel > 0)
-	{
-		rightSpeed = throttle * wheel;
-		leftSpeed = throttle * (1/wheel);
-	}
-	else if(wheel < 0)
-	{
-		leftSpeed = throttle * wheel;
-		rightSpeed = throttle * (1/wheel);
-	}
-	left1Wheel->Set(leftSpeed);
-	right1Wheel->Set(rightSpeed);
-
-}
-*/
 
 void Chassis::SetShifter(ShifterValue value)
 {

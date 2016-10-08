@@ -45,13 +45,12 @@ public:
 	enum ShifterValue {kLow = DoubleSolenoid::kForward, kHigh = DoubleSolenoid::kReverse };
 
 	// Drive the robot left and right
-	void SetTankDrive(double left, double right);
 
-	void SetArcadeDrive(double throttle, double wheel);
+	void SetDrive(double left, double right);
 
-	void GetLeftSpeed(double throttle);
+	void GetLeftSpeed();
 
-	void GetRightSpeed(double throttle);
+	void GetRightSpeed();
 
 	void SetShifter(ShifterValue value);
 

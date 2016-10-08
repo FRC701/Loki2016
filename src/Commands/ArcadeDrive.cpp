@@ -17,7 +17,22 @@ void ArcadeDrive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArcadeDrive::Execute()
 {
-	Robot::chassis->GetLeftSpeed(Robot::oi->GetDriverStick());
+		double throttle = Robot::oi->GetDriverStick();
+		double leftSpeed = throttle;	double rightSpeed = throttle;
+		double wheel = Robot::oi->GetDriverWheel();
+		if(wheel > 0)
+		{
+			leftSpeed = throttle * (1/wheel);	rightSpeed = throttle * (1/wheel);
+		}
+		else if(wheel < 0)
+		{
+			leftSpeed = throttle * wheel;	rightSpeed = throttle * wheel;
+		}
+
+	Robot::chassis->GetLeftSpeed(); 	Robot::chassis->GetRightSpeed();
+	Robot::chassis->SetDrive(leftSpeed, rightSpeed);
+
+	//Robot::chassis->GetLeftSpeed(Robot::oi->GetDriverStick());
 
 //	Robot::chassis->SetArcadeDrive(Robot::oi->GetDriverStick(),
 	//								Robot::oi->GetDriverWheel());
