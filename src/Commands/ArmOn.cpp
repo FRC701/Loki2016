@@ -2,7 +2,7 @@
 
 ArmOn::ArmOn(double speed)
 {
-mspeed == speed;
+mspeed = speed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::arms.get());
