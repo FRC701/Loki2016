@@ -1,9 +1,9 @@
 #include "IntakeOn.h"
 
-IntakeOn::IntakeOn(double horiSpeed, double vertiSpeed)
+IntakeOn::IntakeOn(double horizontalSpeed, double verticalSpeed)
 {
-	mhoriSpeed = horiSpeed;
-	mvertiSpeed = vertiSpeed;
+	mHorizontalSpeed = horizontalSpeed;
+	mVerticalSpeed = verticalSpeed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }
@@ -17,7 +17,7 @@ void IntakeOn::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void IntakeOn::Execute()
 {
-	Robot::intake->SetIntake(mhoriSpeed,mvertiSpeed);
+	Robot::intake->SetIntake(mHorizontalSpeed,mVerticalSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
