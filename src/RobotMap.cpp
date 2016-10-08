@@ -26,8 +26,9 @@ std::shared_ptr<DoubleSolenoid> RobotMap::chassisShifter;
 std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
 
 //.........intake..........
-std::shared_ptr<CANTalon> RobotMap::horizontalBands;
-std::shared_ptr<CANTalon> RobotMap::verticalBands;
+
+std::shared_ptr<CANTalon> RobotMap::intakeHorizontalBands;
+std::shared_ptr<CANTalon> RobotMap::intakeVerticalBands;
 
 void RobotMap::init() {
 
@@ -62,8 +63,9 @@ void RobotMap::init() {
 
     //..........intake.......
 
-    horizontalBands.reset(new CANTalon(kHoriBandsID));
-    lw->AddActuator("Intake", "HorizontalBands", horizontalBands);
-    verticalBands.reset(new CANTalon(kVerBandsID));
-    lw->AddActuator("Intake", "VerticalBands", verticalBands);
+    intakeHorizontalBands.reset(new CANTalon(kHoriBandsID));
+    lw->AddActuator("Intake", "HorizontalBands", intakeHorizontalBands);
+
+    intakeVerticalBands.reset(new CANTalon(kVerBandsID));
+    lw->AddActuator("Intake", "VerticalBands", intakeVerticalBands);
 }
