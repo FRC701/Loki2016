@@ -24,9 +24,11 @@ std::shared_ptr<CANTalon> RobotMap::chassisRight3Wheel;
 
 std::shared_ptr<DoubleSolenoid> RobotMap::chassisShifter;
 std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
+
 //..........arms..........
-std::shared_ptr<CANTalon> RobotMap::armLeft;
-std::shared_ptr<CANTalon> RobotMap::armRight;
+
+std::shared_ptr<CANTalon> RobotMap::armsLeftBrazo;
+std::shared_ptr<CANTalon> RobotMap::armsRightBrazo;
 void RobotMap::init() {
 
     LiveWindow *lw = LiveWindow::GetInstance();
@@ -58,9 +60,11 @@ void RobotMap::init() {
     chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
     lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
 
-    armLeft.reset(new CANTalon (kArmLeft));
-    lw->AddActuator("Arms", "LeftArmMotor", armLeft);
+    armsLeftBrazo.reset(new CANTalon (kArmLeft));
+    lw->AddActuator("Arms", "LeftBrazo", armsLeftBrazo);
 
-    armLeft.reset(new CANTalon (kArmRight));
-        lw->AddActuator("Arms", "RightArmMotor", armRight);
+    armsRightBrazo.reset(new CANTalon (kArmRight));
+    lw->AddActuator("Arms", "RightBrazo", armsRightBrazo);
+
+
 }
