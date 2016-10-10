@@ -35,7 +35,11 @@ public:
 	static std::shared_ptr<DoubleSolenoid> chassisShifter;
 	static std::shared_ptr<DoubleSolenoid> chassisKickstand;
 
-//	/*
+	//...........intake........
+
+	static std::shared_ptr<CANTalon> intakeHorizontalBands;
+	static std::shared_ptr<CANTalon> intakeVerticalBands;
+
 
 	//..........chassis..........
 
@@ -51,7 +55,12 @@ public:
 	static const int kKickstandF = 4;
 	static const int kKickstandR = 5;
 
-	// */
+	//...........intake........
+
+	static const int kHoriBandsID = 7;
+	static const int kVerBandsID = 8;
+
+
 	static void init();
 
 
