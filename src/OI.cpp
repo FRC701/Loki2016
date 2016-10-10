@@ -27,16 +27,36 @@ OI::OI() {
     driver.reset(new Joystick(0));
     
     dA.reset(new JoystickButton(driver.get(), 1));
-    dA->WhenReleased(new ToggleKickstand());
+    dA->WhenPressed(new ToggleKickstand());
 
     dB.reset(new JoystickButton(driver.get(), 2));
-    dB->WhenReleased(new ToggleShifter());
+    dB->WhenPressed(new ToggleShifter());
 
     dX.reset(new JoystickButton(driver.get(), 3));
-    dX->WhenReleased(new ArmOn(1.0));
+    dX->WhenPressed(new ArmOn(1.0));
 
     dY.reset(new JoystickButton(driver.get(), 4));
-    dY->WhenReleased(new ArmOn(-1.0));
+    dY->WhenPressed(new ArmOn(-1.0));
+
+    dLB.reset(new JoystickButton(driver.get(), 5));
+    dLB->WhenPressed(new AutonomousCommand());
+
+    dRB.reset(new JoystickButton(driver.get(), 6));
+    dRB->WhenPressed(new AutonomousCommand());
+
+    dBack.reset(new JoystickButton(driver.get(), 7));
+    dBack->WhenPressed(new AutonomousCommand());
+
+    dStart.reset(new JoystickButton(driver.get(), 8));
+    dStart->WhenPressed(new AutonomousCommand());
+
+    dL3.reset(new JoystickButton(driver.get(), 9));
+    dL3->WhenPressed(new AutonomousCommand());
+
+    dR3.reset(new JoystickButton(driver.get(), 10));
+    dR3->WhenPressed(new AutonomousCommand());
+
+
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("TankDrive", new TankDrive());
