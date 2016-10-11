@@ -95,9 +95,11 @@ void RobotMap::init() {
     shooterLifter.reset(new DoubleSolenoid(kLifterF, kLifterR));
     lw->AddActuator("Shooter", "Lifter", shooterLifter);
 
-    armsLeftBrazo.reset(new CANTalon (kArmLeft));
+    //..........arms..........
+
+    armsLeftBrazo.reset(new CANTalon (kLeftBrazo));
     lw->AddActuator("Arms", "LeftBrazo", armsLeftBrazo);
 
-    armsRightBrazo.reset(new CANTalon (kArmRight));
+    armsRightBrazo.reset(new CANTalon (kRightBrazo));
     lw->AddActuator("Arms", "RightBrazo", armsRightBrazo);
 }
