@@ -60,11 +60,10 @@ void RobotMap::init() {
     chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
     lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
 
-    armsLeftBrazo.reset(new CANTalon (kArmLeft));
+    armsLeftBrazo.reset(new CANTalon (kLeftBrazo));
     lw->AddActuator("Arms", "LeftBrazo", armsLeftBrazo);
 
-    armsRightBrazo.reset(new CANTalon (kArmRight));
+    armsRightBrazo.reset(new CANTalon (kRightBrazo));
     lw->AddActuator("Arms", "RightBrazo", armsRightBrazo);
-
 
 }

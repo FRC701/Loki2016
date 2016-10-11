@@ -58,8 +58,8 @@ public:
 
 	//..........arms..........
 
-	static const int kArmLeft  = 20;
-	static const int kArmRight = 21;
+	static const int kLeftBrazo  = 20;
+	static const int kRightBrazo = 21;
 
 
 	//.........Buttons.....
