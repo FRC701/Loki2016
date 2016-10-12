@@ -33,6 +33,48 @@ void Arms::ArmLevelSetUp()
 	rightBrazo->SetControlMode(CANTalon::kPosition);
 }
 
+void Arms::SetArmLevel(ArmLevelPosition position)
+{
+	if(position == Arms::Portculis)
+	{
+		Robot::arms->leftBrazo->SelectProfileSlot(1);
+		Robot::arms->rightBrazo->SelectProfileSlot(1);
+
+		Robot::arms->leftBrazo->Set(-0.026);
+		Robot::arms->rightBrazo->Set(0.022);
+	}
+
+	else
+	{
+	Robot::arms->leftBrazo->SelectProfileSlot(0);
+	Robot::arms->rightBrazo->SelectProfileSlot(0);
+	}
+
+	switch(position)
+	{
+	case Intake:
+		Robot::arms->leftBrazo->Set(0.0);
+		Robot::arms->rightBrazo->Set(0.0);
+		break;
+	case Scale:
+		Robot::arms->leftBrazo->Set(0.150);
+		Robot::arms->rightBrazo->Set(-0.150);
+		break;
+	case LowGoal:
+		Robot::arms->leftBrazo->Set(0.151);
+		Robot::arms->rightBrazo->Set(-0.153);
+		break;
+	case Moat:
+		Robot::arms->leftBrazo->Set(0.08);
+		Robot::arms->rightBrazo->Set(-0.08);
+		break;
+	case Cheval:
+		Robot::arms->leftBrazo->Set(0.0);
+		Robot::arms->rightBrazo->Set(0.0);
+	}
+
+}
+
 void Arms::GeneralSetUp()
 {
 	/*
