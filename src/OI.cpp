@@ -33,10 +33,11 @@ OI::OI() {
     dB->WhenReleased(new ToggleShifter());
 
     dX.reset(new JoystickButton(driver.get(), 3));
-    dX->WhileHeld(new IntakeOn(0.5,0.5));
+    dX->WhenReleased(new ToggleLifter());
 
-    dY.reset(new JoystickButton(driver.get(), 2));
-    dY->WhileHeld(new IntakeOn(-0.5,-0.5));
+    dY.reset(new JoystickButton(driver.get, 4));
+    dY->WhileHeld(new PrepShooter(1.0));
+
 
     // SmartDashboard Buttons
     SmartDashboard::PutData("TankDrive", new TankDrive());
