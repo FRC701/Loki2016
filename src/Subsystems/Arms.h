@@ -18,26 +18,49 @@ private:
 	static const int kRightBrazoAbsoluteOffset = -221;//final 3038;//2355;
 
 
-	const double kLeftBrazoForwardPositionLimit = 0.3;
-	const double kLeftBrazoReversePositionLimit = -0.1;
-	const double kRightBrazoForwardPositionLimit = 0.3;
-	const double kRightBrazoReversePositionLimit = -0.2;
-	const double kArmsProfile1_P = 10.0;
-	const double kArmsProfile1_F = 5.0;
+	static constexpr double kLeftBrazoForwardPositionLimit = 0.3;
+	static constexpr double kLeftBrazoReversePositionLimit = -0.1;
+	static constexpr double kRightBrazoForwardPositionLimit = 0.3;
+	static constexpr double kRightBrazoReversePositionLimit = -0.2;
+	static constexpr double kArmsProfile1_P = 10.0;
+	static constexpr double kArmsProfile1_F = 5.0;
 
-	enum ArmLevelPosition
-			{
-				Intake = 0,
-				Portculis,
-				Scale,
-				LowGoal,
-				Moat,
-				Cheval
-			};
+	//..........positions..........
+
+	static constexpr double kIntakeLevelLeft = 0.0;
+	static constexpr double kIntakeLevelRight = 0.0;
+
+	static constexpr double kPortculisLevelLeft = 0.0;
+	static constexpr double kPortculisLevelRight = 0.0;
+
+	static constexpr double kScaleLevelLeft = 0.0;
+	static constexpr double kScaleLevelRight = 0.0;
+
+	static constexpr double kLowGoalLevelLeft = 0.0;
+	static constexpr double kLowGoalLevelRight = 0.0;
+
+	static constexpr double kMoatLevelLeft = 0.0;
+	static constexpr double kMoatLevelRight = 0.0;
+
+	static constexpr double kChevalLevelLeft = 0.0;
+	static constexpr double kChevalLevelRight = 0.0;
+
 
 public:
+
+	enum ArmLevelPosition
+				{
+					Intake = 0,
+					Portculis,
+					Scale,
+					LowGoal,
+					Moat,
+					Cheval
+				};
+
 	Arms();
 	void InitDefaultCommand();
+
 	void ArmsOn(double speed);
 
 	void GeneralSetUp();
@@ -45,6 +68,7 @@ public:
 	void ArmLevelSetUp();
 
 	void SetArmLevel(ArmLevelPosition position);
+
 };
 
 #endif

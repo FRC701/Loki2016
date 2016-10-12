@@ -35,42 +35,47 @@ void Arms::ArmLevelSetUp()
 
 void Arms::SetArmLevel(ArmLevelPosition position)
 {
-	if(position == Arms::Portculis)
-	{
-		Robot::arms->leftBrazo->SelectProfileSlot(1);
-		Robot::arms->rightBrazo->SelectProfileSlot(1);
-
-		Robot::arms->leftBrazo->Set(-0.026);
-		Robot::arms->rightBrazo->Set(0.022);
-	}
-
-	else
-	{
-	Robot::arms->leftBrazo->SelectProfileSlot(0);
-	Robot::arms->rightBrazo->SelectProfileSlot(0);
-	}
 
 	switch(position)
 	{
+	case Portculis:
+		leftBrazo->SelectProfileSlot(1);
+		rightBrazo->SelectProfileSlot(1);
+
+		leftBrazo->Set(kPortculisLevelLeft);
+		rightBrazo->Set(kPortculisLevelRight);
+		break;
+
 	case Intake:
-		Robot::arms->leftBrazo->Set(0.0);
-		Robot::arms->rightBrazo->Set(0.0);
+		leftBrazo->SelectProfileSlot(0);
+		rightBrazo->SelectProfileSlot(0);
+		leftBrazo->Set(kIntakeLevelLeft);
+		rightBrazo->Set(kIntakeLevelRight);
 		break;
 	case Scale:
-		Robot::arms->leftBrazo->Set(0.150);
-		Robot::arms->rightBrazo->Set(-0.150);
+		leftBrazo->SelectProfileSlot(0);
+		rightBrazo->SelectProfileSlot(0);
+		leftBrazo->Set(kScaleLevelLeft);
+		rightBrazo->Set(kScaleLevelRight);
 		break;
 	case LowGoal:
-		Robot::arms->leftBrazo->Set(0.151);
-		Robot::arms->rightBrazo->Set(-0.153);
+		leftBrazo->SelectProfileSlot(0);
+		rightBrazo->SelectProfileSlot(0);
+		leftBrazo->Set(kLowGoalLevelLeft);
+		rightBrazo->Set(kLowGoalLevelRight);
 		break;
 	case Moat:
-		Robot::arms->leftBrazo->Set(0.08);
-		Robot::arms->rightBrazo->Set(-0.08);
+		leftBrazo->SelectProfileSlot(0);
+		rightBrazo->SelectProfileSlot(0);
+		leftBrazo->Set(kMoatLevelLeft);
+		rightBrazo->Set(kMoatLevelRight);
 		break;
 	case Cheval:
-		Robot::arms->leftBrazo->Set(0.0);
-		Robot::arms->rightBrazo->Set(0.0);
+		leftBrazo->SelectProfileSlot(0);
+		rightBrazo->SelectProfileSlot(0);
+		leftBrazo->Set(kChevalLevelLeft);
+		rightBrazo->Set(kChevalLevelRight);
+		break;
 	}
 
 }
