@@ -1,6 +1,6 @@
 #include "ArmLevel.h"
 
-ArmLevel::ArmLevel(ArmLevelPosition position)
+ArmLevel::ArmLevel(Arms::ArmLevelPosition position)
 : mPosition(position),
   count(0)
 {
@@ -18,49 +18,7 @@ void ArmLevel::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArmLevel::Execute()
 {
-
-	switch(mPosition) {
-		case Intake:
-			RobotMap::intakeintakeMotor3->SelectProfileSlot(0);
-			RobotMap::intakeintakeMotor4->SelectProfileSlot(0);
-			RobotMap::intakeintakeMotor3->Set(0.0);
-			RobotMap::intakeintakeMotor4->Set(0.0);
-			break;
-		case Portculis:
-			RobotMap::intakeintakeMotor3->SelectProfileSlot(1);
-			RobotMap::intakeintakeMotor4->SelectProfileSlot(1);
-			RobotMap::intakeintakeMotor3->Set(-0.026);
-			RobotMap::intakeintakeMotor4->Set(0.022);
-			break;
-		case Scale:
-			RobotMap::intakeintakeMotor3->SelectProfileSlot(0);
-			RobotMap::intakeintakeMotor4->SelectProfileSlot(0);
-
-			RobotMap::intakeintakeMotor3->Set(0.150);
-			RobotMap::intakeintakeMotor4->Set(-0.150);
-			break;
-		case LowGoal:
-			RobotMap::intakeintakeMotor3->SelectProfileSlot(0);
-			RobotMap::intakeintakeMotor4->SelectProfileSlot(0);
-
-			RobotMap::intakeintakeMotor3->Set(0.151);
-			RobotMap::intakeintakeMotor4->Set(-0.153);
-			break;
-		case Moat:
-			RobotMap::intakeintakeMotor3->SelectProfileSlot(0);
-			RobotMap::intakeintakeMotor4->SelectProfileSlot(0);
-
-			RobotMap::intakeintakeMotor3->Set(0.08);
-			RobotMap::intakeintakeMotor4->Set(-0.08);
-			break;
-		case Cheval:
-			RobotMap::intakeintakeMotor3->SelectProfileSlot(0);
-			RobotMap::intakeintakeMotor4->SelectProfileSlot(0);
-
-			RobotMap::intakeintakeMotor3->Set(0.0);
-			RobotMap::intakeintakeMotor4->Set(0.0);
-				break;
-	}
+	Robot::arms->SetArmLevel(mPosition);
 }
 
 // Make this return true when this Command no longer needs to run execute()

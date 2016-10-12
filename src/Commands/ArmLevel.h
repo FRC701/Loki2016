@@ -7,16 +7,7 @@
 class ArmLevel: public Command
 {
 public:
-		enum ArmLevelPosition
-		{
-			Intake = 0,
-			Portculis,
-			Scale,
-			LowGoal,
-			Moat,
-			Cheval
-		};
-	ArmLevel(ArmLevelPosition position);
+	ArmLevel(Arms::ArmLevelPosition position);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -24,7 +15,7 @@ public:
 	void Interrupted();
 
 private:
-		ArmLevelPosition mPosition;
+		Arms::ArmLevelPosition mPosition;
 		int count;
 };
 
