@@ -16,7 +16,7 @@ void SetLifter::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void SetLifter::Execute()
 {
-mValue == Shooter::kUp ? Robot::shooter->SetLifter(Shooter::kUp) : Robot::shooter->SetLifter(Shooter::kDown);
+	(mValue == Shooter::kUp) ? Robot::shooter->SetLifter(Shooter::kUp) : Robot::shooter->SetLifter(Shooter::kDown);
 
 }
 

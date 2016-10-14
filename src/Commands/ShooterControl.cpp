@@ -1,8 +1,9 @@
 #include "ShooterControl.h"
 
-ShooterControl::ShooterControl(double speed)
+ShooterControl::ShooterControl(double flyWheelSpeed, double rollerSpeed)
 {
-	mSpeed = speed;
+	mFlyWheelSpeed = flyWheelSpeed;
+	mRollerSpeed = rollerSpeed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }
@@ -16,7 +17,8 @@ void ShooterControl::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
-	Robot::shooter->SetShooter(mSpeed);
+	Robot::shooter->SetShooter(mFlyWheelSpeed);
+	Robot::shooter->SetRoller(mRollerSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()

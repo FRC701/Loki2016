@@ -25,6 +25,7 @@ Chassis::Chassis() : Subsystem("Chassis") {
     left1Wheel = RobotMap::chassisLeft1Wheel;
     left2Wheel = RobotMap::chassisLeft2Wheel;
     left3Wheel = RobotMap::chassisLeft3Wheel;
+
     right1Wheel = RobotMap::chassisRight1Wheel;
     right2Wheel = RobotMap::chassisRight2Wheel;
     right3Wheel = RobotMap::chassisRight3Wheel;

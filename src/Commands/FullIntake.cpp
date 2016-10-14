@@ -6,7 +6,7 @@ FullIntake::FullIntake()
 	Requires(Robot::intake.get());
 	Requires(Robot::shooter.get());
 	AddSequential(new IntakeOn(1.0, 1.0));
-	AddParallel(new ShooterControl(-1.0));
+	AddParallel(new ShooterControl(-1.0, -1.0));
 
 
 	// Add Commands here:

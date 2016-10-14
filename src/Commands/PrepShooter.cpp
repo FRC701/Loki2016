@@ -18,7 +18,7 @@ PrepShooter::PrepShooter(double mSpeed)
 
 	// TODO Intake Arm Level
 	AddSequential(new SetLifter(Shooter::kUp));
-	AddSequential(new ShooterControl(speed));
+	AddSequential(new ShooterControl(speed, 0.0));
 
 
 	// A command group will require all of the subsystems that each member
