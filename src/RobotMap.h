@@ -25,7 +25,6 @@ public:
 
 	//..........Talons and Solenoids..........
 
-
 	//..........chassis..........
 
 	static std::shared_ptr<CANTalon> chassisLeft1Wheel;
@@ -37,6 +36,7 @@ public:
 
 	static std::shared_ptr<DoubleSolenoid> chassisShifter;
 	static std::shared_ptr<DoubleSolenoid> chassisKickstand;
+
 
 	//...........intake........
 
@@ -53,6 +53,10 @@ public:
 
 	//..........IDs..........
 
+	//..........arms..........
+
+	static std::shared_ptr<CANTalon> armsLeftBrazo;
+	static std::shared_ptr<CANTalon> armsRightBrazo;
 
 	//..........chassis..........
 
@@ -82,6 +86,18 @@ public:
 	static const int kLifterF = 1;
 	static const int kLifterR = 2;
 
+	//..........arms..........
+
+	static std::shared_ptr<CANTalon> armLeft;
+	static std::shared_ptr<CANTalon> armRight;
+
+	//..........arms..........
+
+	static const int kLeftBrazo  = 20;
+	static const int kRightBrazo = 21;
+
+
+	//.........Buttons.....
 	static void init();
 
 
