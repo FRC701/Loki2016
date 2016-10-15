@@ -13,7 +13,7 @@ void Intake::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	//SetDefaultCommand(new IntakeOn(0.0,0.0));
+	SetDefaultCommand(new IntakeOn(0.0,0.0));
 }
 
 // Put methods for controlling this subsystem

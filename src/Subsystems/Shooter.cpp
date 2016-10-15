@@ -30,7 +30,16 @@ void Shooter::InitDefaultCommand()
 
 void Shooter::SetLifter(LifterValue value)
 {
-	lifter->Set(static_cast<DoubleSolenoid::Value>(value));
+	//lifter->Set(static_cast<DoubleSolenoid::Value>(value));
+
+	switch (value){
+	case kUp:
+		lifter->Set(DoubleSolenoid::kForward);
+		break;
+	case kDown:
+		lifter->Set(DoubleSolenoid::kReverse);
+		break;
+	}
 }
 
 bool Shooter::IsLifterUp()

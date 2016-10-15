@@ -77,7 +77,17 @@ void Chassis::SetTankDrive(double left, double right)
 
 void Chassis::SetShifter(ShifterValue value)
 {
-	shifter->Set(static_cast<DoubleSolenoid::Value>(value));
+	//shifter->Set(static_cast<DoubleSolenoid::Value>(value));
+
+	switch(value){
+		case kLow:
+			shifter->Set(DoubleSolenoid::kReverse);
+			break;
+		case kHigh:
+			shifter->Set(DoubleSolenoid::kForward);
+			break;
+	}
+
 }
 
 bool Chassis::IsShifterHigh()

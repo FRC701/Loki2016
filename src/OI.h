@@ -23,6 +23,7 @@ private:
 	std::shared_ptr<JoystickButton> dX;
 	std::shared_ptr<JoystickButton> dY;
 	std::shared_ptr<JoystickButton> dLB;
+	std::shared_ptr<JoystickButton> dL3;
 	public:
 	OI();
 

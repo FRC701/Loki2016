@@ -6,6 +6,9 @@ ShooterControl::ShooterControl(double flyWheelSpeed, double rollerSpeed)
 	mRollerSpeed = rollerSpeed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+
+	Requires(Robot::shooter.get());
+
 }
 
 // Called just before this Command runs the first time

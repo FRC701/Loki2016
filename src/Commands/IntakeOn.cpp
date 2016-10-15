@@ -6,6 +6,9 @@ IntakeOn::IntakeOn(double horizontalSpeed, double verticalSpeed)
 	mVerticalSpeed = verticalSpeed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+
+	Requires(Robot::intake.get());
+
 }
 
 // Called just before this Command runs the first time
@@ -23,7 +26,7 @@ void IntakeOn::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeOn::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
