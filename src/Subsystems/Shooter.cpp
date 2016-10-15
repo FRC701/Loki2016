@@ -13,6 +13,9 @@ Shooter::Shooter() :
 
   rightFlywheel->SetControlMode(CANTalon::kFollower);
   rightFlywheel->Set(RobotMap::kLeftFlywheelID);
+
+  lifter->Set(DoubleSolenoid::kOff);
+
 }
 
 void Shooter::InitDefaultCommand()
@@ -32,7 +35,7 @@ void Shooter::SetLifter(LifterValue value)
 
 bool Shooter::IsLifterUp() const
 {
-	return lifter->Get() == DoubleSolenoid::kForward;
+	return lifter->Get() == static_cast<DoubleSolenoid::Value>(kUp);
 }
 
 void Shooter::SetShooter(double speed)
