@@ -7,7 +7,7 @@
 class IntakeOn: public Command
 {
 public:
-	IntakeOn(double horizontalSpeed, double verticalSpeed);
+	IntakeOn(double speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,7 +15,7 @@ public:
 	void Interrupted();
 
 private:
-	double mHorizontalSpeed, mVerticalSpeed;
+	double mSpeed;
 };
 
 #endif

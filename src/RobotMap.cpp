@@ -27,8 +27,9 @@ std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
 
 //.........intake..........
 
-std::shared_ptr<CANTalon> RobotMap::intakeHorizontalBands;
-std::shared_ptr<CANTalon> RobotMap::intakeVerticalBands;
+std::shared_ptr<CANTalon> RobotMap::intakeMecanumWheels;
+
+std::shared_ptr<DoubleSolenoid> RobotMap::intakeArms;
 
 //..........shooter..........
 
@@ -66,18 +67,13 @@ void RobotMap::init() {
     chassisShifter.reset(new DoubleSolenoid(kShifterF,kShifterR));
     lw->AddActuator("Chassis", "Shifter", chassisShifter);
 
-    chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
-    lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
-
-
     //..........intake.......
 
-    intakeHorizontalBands.reset(new CANTalon(kHoriBandsID));
-    lw->AddActuator("Intake", "HorizontalBands", intakeHorizontalBands);
+    intakeMecanumWheels.reset(new CANTalon(kMecanumWheelsID));
+    lw->AddActuator("Intake", "MecanumWheels", intakeMecanumWheels);
 
-    intakeVerticalBands.reset(new CANTalon(kVerBandsID));
-    lw->AddActuator("Intake", "VerticalBands", intakeVerticalBands);
-
+    intakeArms.reset(new DoubleSolenoid(kArmsF, kArmsR));
+    lw->AddActuator("Intake", "Arms", intakeArms);
     //..........shooter..........
 
     shooterLeftFlywheel.reset(new CANTalon(kLeftFlywheelID));
