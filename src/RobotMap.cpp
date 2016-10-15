@@ -29,6 +29,13 @@ std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
 
 std::shared_ptr<CANTalon> RobotMap::intakeHorizontalBands;
 std::shared_ptr<CANTalon> RobotMap::intakeVerticalBands;
+//..........shooter..........
+
+std::shared_ptr<CANTalon> RobotMap::shooterLeftFlywheel;
+std::shared_ptr<CANTalon> RobotMap::shooterRightFlywheel;
+std::shared_ptr<CANTalon> RobotMap::shooterRoller;
+
+std::shared_ptr<DoubleSolenoid> RobotMap::shooterLifter;
 
 void RobotMap::init() {
 
@@ -39,7 +46,7 @@ void RobotMap::init() {
 
     chassisLeft1Wheel.reset(new CANTalon(kLeft1ID));
     lw->AddActuator("Chassis", "Left1Wheel", chassisLeft1Wheel);
-    
+
     chassisLeft2Wheel.reset(new CANTalon(kLeft2ID));
     lw->AddActuator("Chassis", "Left2Wheel", chassisLeft2Wheel);
 
@@ -68,4 +75,18 @@ void RobotMap::init() {
 
     intakeVerticalBands.reset(new CANTalon(kVerBandsID));
     lw->AddActuator("Intake", "VerticalBands", intakeVerticalBands);
+
+    //..........shooter..........
+
+    shooterLeftFlywheel.reset(new CANTalon(kLeftFlywheelID));
+    lw->AddActuator("Shooter", "LeftFlywheel", shooterLeftFlywheel);
+
+    shooterRightFlywheel.reset(new CANTalon(kRightFlywheelID));
+    lw->AddActuator("Shooter", "RightFlywheel", shooterRightFlywheel);
+
+    shooterRoller.reset(new CANTalon(kRollerID));
+    lw->AddActuator("Shooter", "Roller", shooterRoller);
+
+    shooterLifter.reset(new DoubleSolenoid(kLifterF, kLifterR));
+    lw->AddActuator("Shooter", "Lifter", shooterLifter);
 }
