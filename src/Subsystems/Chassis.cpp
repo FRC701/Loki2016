@@ -77,11 +77,12 @@ void Chassis::SetTankDrive(double left, double right)
 void Chassis::SetShifter(ShifterValue value)
 {
 	shifter->Set(static_cast<DoubleSolenoid::Value>(value));
+
 }
 
 bool Chassis::IsShifterHigh()
 {
-	return shifter->Get() == DoubleSolenoid::kForward;
+	return shifter->Get() == static_cast<DoubleSolenoid::Value>(kHigh);
 }
 
 void Chassis::SetKickstand(KickstandValue value)
@@ -91,5 +92,5 @@ void Chassis::SetKickstand(KickstandValue value)
 
 bool Chassis::IsKickstandIn()
 {
-	return kickstand->Get() == DoubleSolenoid::kForward;
+	return kickstand->Get() == static_cast<DoubleSolenoid::Value>(kIn);
 }

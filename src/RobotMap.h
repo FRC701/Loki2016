@@ -23,7 +23,7 @@
 class RobotMap {
 public:
 
-	//..........Talons and Solenoids..........
+//..........Talons and Solenoids..........
 
 	//..........chassis..........
 
@@ -51,7 +51,7 @@ public:
 
 	static std::shared_ptr<DoubleSolenoid> shooterLifter;
 
-	//..........IDs..........
+//..........IDs..........
 
 	//..........arms..........
 
@@ -70,7 +70,7 @@ public:
 	static const int kShifterF = 0;
 	static const int kShifterR = 3;
 	static const int kKickstandF = 4;
-	static const int kKickstandR = 5;
+	static const int kKickstandR = 6;
 
 	//...........intake........
 
