@@ -4,8 +4,7 @@
 #include "../Robot.h"
 Intake::Intake() : Subsystem("Intake"){
 
-horizontalBands = RobotMap::intakeHorizontalBands;
-verticalBands = RobotMap::intakeVerticalBands;
+mecanumWheels = RobotMap::intakeMecanumWheels;
 
 }
 
@@ -13,14 +12,13 @@ void Intake::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
 	//SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new IntakeOn(0.0,0.0));
+	SetDefaultCommand(new IntakeOn(0.0));
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Intake::SetIntake(double horiSpeed, double vertiSpeed)
+void Intake::SetIntake(double speed)
 {
-	Robot::intake->horizontalBands->Set(horiSpeed);
-	Robot::intake->verticalBands->Set(vertiSpeed);
+	Robot::intake->mecanumWheels->Set(speed);
 }
