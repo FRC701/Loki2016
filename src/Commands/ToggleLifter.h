@@ -2,17 +2,16 @@
 #define ToggleLifter_H
 
 #include "Commands/Command.h"
-#include "../Robot.h"
 
 class ToggleLifter: public Command
 {
 public:
-	ToggleLifter();
-	void Initialize();
-	void Execute();
-	bool IsFinished();
-	void End();
-	void Interrupted();
+  ToggleLifter();
+  void Initialize();
+  void Execute();
+  bool IsFinished();
+  void End();
+  void Interrupted();
 };
 
 #endif
