@@ -1,7 +1,12 @@
 #include "Cancel.h"
+#include "IntakeOn.h"
+#include "ShooterControl.h"
+#include "RollerOn.h"
 
 Cancel::Cancel()
 {
+	Requires(Robot::intake.get());
+	Requires(Robot::shooter.get());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

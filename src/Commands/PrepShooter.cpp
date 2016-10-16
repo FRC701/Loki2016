@@ -5,6 +5,8 @@
 
 PrepShooter::PrepShooter(double speed)
 {
+	Requires(Robot::intake.get());
+	Requires(Robot::shooter.get());
 	mSpeed = speed;
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

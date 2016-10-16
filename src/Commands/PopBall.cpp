@@ -6,6 +6,8 @@
 
 PopBall::PopBall()
 {
+	Requires(Robot::intake.get());
+	Requires(Robot::shooter.get());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

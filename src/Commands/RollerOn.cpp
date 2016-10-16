@@ -5,6 +5,7 @@ RollerOn::RollerOn(double speed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::shooter.get());
 }
 
 // Called just before this Command runs the first time
