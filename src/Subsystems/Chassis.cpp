@@ -81,3 +81,13 @@ bool Chassis::IsShifterHigh()
 {
 	return shifter->Get() == static_cast<DoubleSolenoid::Value>(kHigh);
 }
+
+void Chassis::SetMode(TalonMode mode)
+{
+	right1Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
+}
+
+bool Chassis::IsBrakeOn()
+{
+	return right1Wheel->GetBrakeEnableDuringNeutral() == static_cast<CANTalon::NeutralMode>(kBrake);
+}
