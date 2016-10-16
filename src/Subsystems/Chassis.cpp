@@ -84,7 +84,12 @@ bool Chassis::IsShifterHigh()
 
 void Chassis::SetMode(TalonMode mode)
 {
+	left1Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
+	left2Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
+	left3Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 	right1Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
+	right2Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
+	right3Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 }
 
 bool Chassis::IsBrakeOn()

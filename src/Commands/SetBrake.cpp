@@ -1,41 +1,39 @@
-#include "ToggleBrake.h"
+#include "SetBrake.h"
 
-ToggleBrake::ToggleBrake()
+SetBrake::SetBrake(Chassis::TalonMode mode)
+: mMode(mode)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void ToggleBrake::Initialize()
+void SetBrake::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ToggleBrake::Execute()
+void SetBrake::Execute()
 {
-Chassis::TalonMode mode
-	= Robot::chassis->IsBrakeOn() ? Chassis::kCoast : Chassis::kBrake;
-Robot::chassis->SetMode(mode);
-
+	Robot::chassis->SetMode(mMode);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ToggleBrake::IsFinished()
+bool SetBrake::IsFinished()
 {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
-void ToggleBrake::End()
+void SetBrake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ToggleBrake::Interrupted()
+void SetBrake::Interrupted()
 {
 
 }

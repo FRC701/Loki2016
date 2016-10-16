@@ -1,18 +1,21 @@
-#ifndef ToggleBrake_H
-#define ToggleBrake_H
+#ifndef SetBrake_H
+#define SetBrake_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class ToggleBrake: public Command
+class SetBrake: public Command
 {
 public:
-	ToggleBrake();
+	SetBrake(Chassis::TalonMode mode);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+
+private:
+	Chassis::TalonMode mMode;
 };
 
 #endif
