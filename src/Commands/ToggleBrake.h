@@ -3,7 +3,7 @@
 
 #include "Commands/Command.h"
 
-class ToggleBrake: public Command
+class ToggleBrake: public CommandBase
 {
 public:
   ToggleBrake();
