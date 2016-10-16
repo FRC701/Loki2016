@@ -54,11 +54,6 @@ public:
 
 //..........IDs..........
 
-	//..........arms..........
-
-	static std::shared_ptr<CANTalon> armsLeftBrazo;
-	static std::shared_ptr<CANTalon> armsRightBrazo;
-
 	//..........chassis..........
 
 	static const int kLeft1ID = 1;
@@ -86,18 +81,7 @@ public:
 	static const int kLifterF = 1;
 	static const int kLifterR = 2;
 
-	//..........arms..........
 
-	static std::shared_ptr<CANTalon> armLeft;
-	static std::shared_ptr<CANTalon> armRight;
-
-	//..........arms..........
-
-	static const int kLeftBrazo  = 20;
-	static const int kRightBrazo = 21;
-
-
-	//.........Buttons.....
 	static void init();
 
 

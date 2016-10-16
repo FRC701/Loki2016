@@ -15,7 +15,6 @@ std::shared_ptr<Chassis> Robot::chassis;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<Intake> Robot::intake;
 std::shared_ptr<Shooter> Robot::shooter;
-std::shared_ptr<Arms> Robot::arms;
 
 
 void Robot::RobotInit() {
@@ -24,7 +23,6 @@ void Robot::RobotInit() {
     chassis.reset(new Chassis());
     intake.reset(new Intake());
     shooter.reset(new Shooter());
-    arms.reset(new Arms());
 
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from

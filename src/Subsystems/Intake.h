@@ -12,12 +12,21 @@ private:
 
 	std::shared_ptr<CANTalon> mecanumWheels;
 
+	std::shared_ptr<DoubleSolenoid> arms;
+
 public:
 	Intake();
+	void InitDefaultCommand();
+
+	enum ArmsValue {kUp = DoubleSolenoid::kForward, kDown = DoubleSolenoid::kReverse };
 
 	void SetIntake(double speed);
 
-	void InitDefaultCommand();
+	bool IsArmUp() const;
+
+	void SetArms(ArmsValue value);
+
+
 };
 
 #endif

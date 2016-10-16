@@ -51,10 +51,6 @@ public:
 
 	bool IsShifterHigh();
 
-	void SetKickstand(KickstandValue value);
-
-	bool IsKickstandIn();
-
 };
 
 #endif

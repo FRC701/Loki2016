@@ -50,9 +50,6 @@ Chassis::Chassis() : Subsystem("Chassis") {
     right3Wheel->Set(RobotMap::kRight1ID);
 
     SetShifter(kLow);
-    SetKickstand(kIn);
-
-
 }
 
 void Chassis::InitDefaultCommand() {
@@ -83,14 +80,4 @@ void Chassis::SetShifter(ShifterValue value)
 bool Chassis::IsShifterHigh()
 {
 	return shifter->Get() == static_cast<DoubleSolenoid::Value>(kHigh);
-}
-
-void Chassis::SetKickstand(KickstandValue value)
-{
-	kickstand->Set(static_cast<DoubleSolenoid::Value>(value));
-}
-
-bool Chassis::IsKickstandIn()
-{
-	return kickstand->Get() == static_cast<DoubleSolenoid::Value>(kIn);
 }
