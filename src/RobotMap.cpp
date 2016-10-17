@@ -25,6 +25,8 @@ std::shared_ptr<CANTalon> RobotMap::chassisRight3Wheel;
 std::shared_ptr<DoubleSolenoid> RobotMap::chassisShifter;
 std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
 
+std::shared_ptr<RobotDrive> RobotMap::chassisRobotDrive;
+
 //.........intake..........
 
 std::shared_ptr<CANTalon> RobotMap::intakeHorizontalBands;
@@ -72,6 +74,9 @@ void RobotMap::init() {
 
     chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
     lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
+
+ //   chassisRobotDrive.reset(new RobotDrive(chassisLeft1Wheel, chassisRight1Wheel));
+ //   lw->AddActuator("Chassis", "RobotDrive", chassisRobotDrive);
 
     //..........intake.......
 

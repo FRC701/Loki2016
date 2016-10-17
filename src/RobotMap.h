@@ -37,6 +37,8 @@ public:
 	static std::shared_ptr<DoubleSolenoid> chassisShifter;
 	static std::shared_ptr<DoubleSolenoid> chassisKickstand;
 
+	static std::shared_ptr<RobotDrive> chassisRobotDrive;
+
 
 	//...........intake........
 
