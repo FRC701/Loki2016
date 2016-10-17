@@ -20,7 +20,7 @@ Shooter::Shooter() :
 
 void Shooter::InitDefaultCommand()
 {
-	SetDefaultCommand(new ShooterControl(0.0));
+	SetDefaultCommand(new ShooterControl(0.0, 0.0));
 }
 
 // Put methods for controlling this subsystem

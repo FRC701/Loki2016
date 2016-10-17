@@ -20,8 +20,8 @@ PrepShooter::PrepShooter(double speed)
 	// Command1 and Command2 will run in parallel.
 
 	AddSequential(new SetArms(Intake::kDown));
-	AddSequential(new SetLifter(Shooter::kUp));
-	AddSequential(new ShooterControl(mSpeed));
+	AddParallel(new SetLifter(Shooter::kUp));
+	AddParallel(new ShooterControl(mSpeed, 0.0));
 
 
 	// A command group will require all of the subsystems that each member

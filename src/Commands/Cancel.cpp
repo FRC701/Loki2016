@@ -19,8 +19,8 @@ Cancel::Cancel()
 	// Command1 and Command2 will run in parallel.
 
 	AddSequential(new IntakeOn(0.0));
-	AddParallel(new ShooterControl(0.0));
-	AddParallel(new RollerOn(0.0));
+	AddParallel(new ShooterControl(0.0, 0.0));
+
 
 
 

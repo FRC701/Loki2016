@@ -19,8 +19,8 @@ LowGoalShoot::LowGoalShoot()
 	// Command1 and Command2 will run in parallel.
 
 	AddSequential(new SetArms(Intake::kUp));
-	AddParallel(new SetLifter(Shooter::kDown));
-	AddSequential(new ShooterControl(1.0));
+	AddSequential(new SetLifter(Shooter::kDown));
+	AddSequential(new ShooterControl(1.0, 0.0));
 
 	// A command group will require all of the subsystems that each member
 	// would require.

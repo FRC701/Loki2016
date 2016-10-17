@@ -7,6 +7,8 @@ Intake::Intake() : Subsystem("Intake"){
 mecanumWheels = RobotMap::intakeMecanumWheels;
 
 arms = RobotMap::intakeArms;
+
+SetArms(kUp);
 }
 
 void Intake::InitDefaultCommand()

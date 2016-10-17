@@ -22,8 +22,7 @@ FullIntake::FullIntake(double speed)
 
 	AddSequential(new SetArms(Intake::kDown));
 	AddParallel(new IntakeOn(mSpeed));
-	AddParallel(new ShooterControl(mSpeed));
-	AddParallel(new RollerOn(mSpeed));
+	AddSequential(new ShooterControl(mSpeed, mSpeed));
 
 	// A command group will require all of the subsystems that each member
 	// would require.
