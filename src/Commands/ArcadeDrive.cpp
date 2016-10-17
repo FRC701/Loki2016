@@ -6,6 +6,7 @@ ArcadeDrive::ArcadeDrive()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
@@ -17,6 +18,7 @@ void ArcadeDrive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ArcadeDrive::Execute()
 {
+	/*
 		double throttle = Robot::oi->GetDriverStickAxis();
 		double leftSpeed = throttle;
 		double rightSpeed = throttle;
@@ -31,14 +33,15 @@ void ArcadeDrive::Execute()
 			leftSpeed = throttle * (1 - wheel);
 			rightSpeed = throttle;
 		}
+	*/
 
 	//Robot::chassis->GetLeftSpeed(); 	Robot::chassis->GetRightSpeed();
-	Robot::chassis->SetDrive(leftSpeed, rightSpeed);
+//	Robot::chassis->SetArcadeDrive(leftSpeed, rightSpeed);
 
 	//Robot::chassis->GetLeftSpeed(Robot::oi->GetDriverStick());
 
-//	Robot::chassis->SetArcadeDrive(Robot::oi->GetDriverStick(),
-	//								Robot::oi->GetDriverWheel());
+	Robot::chassis->SetArcadeDrive(Robot::oi->GetDriverStickAxis(),
+									Robot::oi->GetDriverWheelAxis());
 
 }
 

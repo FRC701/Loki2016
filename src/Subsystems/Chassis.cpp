@@ -72,7 +72,7 @@ void Chassis::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Chassis::SetDrive(double left, double right)
+void Chassis::SetArcadeDrive(double left, double right)
 {
 	/*
 	Robot::chassis->left1Wheel->Set(left);

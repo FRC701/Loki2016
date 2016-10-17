@@ -48,7 +48,7 @@ public:
 
 	// Drive the robot left and right
 
-	void SetDrive(double left, double right);
+	void SetArcadeDrive(double left, double right);
 
 	void GetLeftSpeed();
 

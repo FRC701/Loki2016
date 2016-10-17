@@ -78,9 +78,6 @@ void RobotMap::init() {
     //Initialize the robot drive :).....................................................
     chassisRobotDrive.reset(new RobotDrive(chassisLeft1Wheel.get(), chassisRight1Wheel.get()));
 
- //   chassisRobotDrive.reset(new RobotDrive(chassisLeft1Wheel, chassisRight1Wheel));
- //   lw->AddActuator("Chassis", "RobotDrive", chassisRobotDrive);
-
     //..........intake.......
 
     intakeHorizontalBands.reset(new CANTalon(kHoriBandsID));
