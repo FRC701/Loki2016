@@ -75,6 +75,9 @@ void RobotMap::init() {
     chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
     lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
 
+    //Initialize the robot drive :).....................................................
+    chassisRobotDrive.reset(new RobotDrive(chassisLeft1Wheel.get(), chassisRight1Wheel.get()));
+
  //   chassisRobotDrive.reset(new RobotDrive(chassisLeft1Wheel, chassisRight1Wheel));
  //   lw->AddActuator("Chassis", "RobotDrive", chassisRobotDrive);
 
