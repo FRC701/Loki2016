@@ -7,6 +7,6 @@ PrepShooter::PrepShooter(double speed)
 : mSpeed(speed)
 {
   AddSequential(new SetArms(Intake::kDown));
-  AddSequential(new SetLifter(Shooter::kUp));
-  AddSequential(new ShooterControl(mSpeed));
+  AddParallel(new SetLifter(Shooter::kUp));
+  AddParallel(new ShooterControl(mSpeed, 0.0));
 }

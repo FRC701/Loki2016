@@ -24,7 +24,7 @@ public:
   void InitDefaultCommand();
 
   enum TalonMode {kBrake = CANTalon::kNeutralMode_Brake, kCoast = CANTalon::kNeutralMode_Coast};
-  enum ShifterValue {kLow = DoubleSolenoid::kReverse, kHigh = DoubleSolenoid::kForward };
+  enum ShifterValue {kHigh = DoubleSolenoid::kReverse, kLow = DoubleSolenoid::kForward };
 
   // Drive the robot left and right
   void SetTankDrive(double left, double right);
