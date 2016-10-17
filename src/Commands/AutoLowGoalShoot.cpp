@@ -1,5 +1,9 @@
 #include "AutoLowGoalShoot.h"
 #include "SetLifter.h"
+#include "AutoDrive.h"
+#include "AutoTurn.h"
+#include "ShooterControl.h"
+//#include "RollerOn.h"
 
 AutoLowGoalShoot::AutoLowGoalShoot()
 {
@@ -19,7 +23,7 @@ AutoLowGoalShoot::AutoLowGoalShoot()
 	AddSequential(new AutoDrive(AutoDrive::LowBar));
 	AddSequential(new AutoTurn(AutoTurn::turnLeft, 600));
 	AddSequential(new ShooterControl(1.0));
-	AddSequential(new RollerOn(1.0));
+//	AddSequential(new RollerOn(1.0));
 
 	// A command group will require all of the subsystems that each member
 	// would require.

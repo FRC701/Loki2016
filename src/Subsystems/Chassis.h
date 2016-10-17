@@ -46,12 +46,12 @@ public:
 	enum KickstandValue {kOut = DoubleSolenoid::kForward, kIn = DoubleSolenoid::kReverse };
 	enum ShifterValue {kLow = DoubleSolenoid::kReverse, kHigh = DoubleSolenoid::kForward };
 
-	double speedLeft = Robot::chassis->GetSpeed("left");
-	double speedRight = Robot::chassis->GetSpeed("right");
-	double encPositionLeft = Robot::chassis->GetEncPosition("left");
-	double encPositionRight = Robot::chassis->GetEncPosition("right");
-	double positionLeft = Robot::chassis->GetPosition("left");
-	double positionRight = Robot::chassis->GetPosition("right");
+	double speedLeft = GetSpeed("left");
+	double speedRight = GetSpeed("right");
+	double encPositionLeft = GetEncPosition("left");
+	double encPositionRight = GetEncPosition("right");
+	double positionLeft = GetPosition("left");
+	double positionRight = GetPosition("right");
 
 	// Drive the robot left and right
 	void SetTankDrive(double left, double right);
@@ -66,11 +66,11 @@ public:
 
 	void AutoSetUp();
 
-	void GetSpeed(string whichWheel);
+	double GetSpeed(string whichWheel);
 
-	void GetPosition(string whichWheel);
+	double GetPosition(string whichWheel);
 
-	void GetEncPosition(string whichWheel);
+	double GetEncPosition(string whichWheel);
 
 	void GeneralSetUp();
 
