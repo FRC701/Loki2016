@@ -12,8 +12,10 @@
 #ifndef CHASSIS_H
 #define CHASSIS_H
 #include "Commands/Subsystem.h"
+#include "../Robot.h"
 #include "WPILib.h"
-#include <string>
+#include <string.h>
+using namespace std;
 
 /**
  *
@@ -44,6 +46,13 @@ public:
 	enum KickstandValue {kOut = DoubleSolenoid::kForward, kIn = DoubleSolenoid::kReverse };
 	enum ShifterValue {kLow = DoubleSolenoid::kReverse, kHigh = DoubleSolenoid::kForward };
 
+	double speedLeft = Robot::chassis->GetSpeed("left");
+	double speedRight = Robot::chassis->GetSpeed("right");
+	double encPositionLeft = Robot::chassis->GetEncPosition("left");
+	double encPositionRight = Robot::chassis->GetEncPosition("right");
+	double positionLeft = Robot::chassis->GetPosition("left");
+	double positionRight = Robot::chassis->GetPosition("right");
+
 	// Drive the robot left and right
 	void SetTankDrive(double left, double right);
 
@@ -54,6 +63,16 @@ public:
 	void SetKickstand(KickstandValue value);
 
 	bool IsKickstandIn();
+
+	void AutoSetUp();
+
+	void GetSpeed(string whichWheel);
+
+	void GetPosition(string whichWheel);
+
+	void GetEncPosition(string whichWheel);
+
+	void GeneralSetUp();
 
 };
 

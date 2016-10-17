@@ -94,3 +94,41 @@ bool Chassis::IsKickstandIn()
 {
 	return kickstand->Get() == static_cast<DoubleSolenoid::Value>(kIn);
 }
+
+void Chassis::AutoSetUp()
+{
+	left1Wheel->SetControlMode(CANTalon::kPosition);
+	right1Wheel->SetControlMode(CANTalon::kPosition);
+	left1Wheel->SetEncPosition(0.0);
+	right1Wheel->SetEncPosition(0.0);
+}
+
+void Chassis::GetSpeed(string whichWheel)
+{
+	if(whichWheel == "right")
+		right1Wheel->GetSpeed();
+	else
+		left1Wheel->GetSpeed();
+}
+
+void Chassis::GetPosition(string whichWheel)
+{
+	if(whichWheel == "right")
+			right1Wheel->GetPosition();
+		else
+			left1Wheel->GetPosition();
+}
+
+void Chassis::GetEncPosition(string whichWheel)
+{
+	if(whichWheel == "right")
+				right1Wheel->GetEncPosition();
+			else
+				left1Wheel->GetEncPosition();
+}
+
+void Chassis::GeneralSetUp()
+{
+	left1Wheel->SetControlMode(CANTalon::kPercentVbus);
+	right1Wheel->SetControlMode(CANTalon::kPercentVbus);
+}
