@@ -44,8 +44,8 @@ void AutoTurn::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool AutoTurn::IsFinished()
 {
-	return Chassis::positionRight <= mposition + tolerance
-				&& Chassis::positionRight >= mposition - tolerance;
+	return positionRight <= mposition + tolerance
+				&& positionRight >= mposition - tolerance;
 
 	// -5 -10 => -5 <= -10 + 10 <= 0
 	// -5 -10 => -5 >= -10 - 10 >= -20

@@ -59,19 +59,19 @@ bool AutoDrive::IsFinished()
 {
 
 
-	if( abs(Chassis::speedLeft) < 1.0)
+	if( abs(speedLeft) < 1.0)
 		counter++;
 	else
 		counter = 0;
 	if(counter == 10)
 		return true;
 
-	if (	(abs(Chassis::encPositionLeft) > abs(Chassis::encPositionRight) + 500) ||
-			(abs(Chassis::encPositionRight) > abs(Chassis::encPositionLeft) + 500)	)
+	if (	(abs(encPositionLeft) > abs(encPositionRight) + 500) ||
+			(abs(encPositionRight) > abs(encPositionLeft) + 500)	)
 		return true;
 
-	return Chassis::positionRight <= mposition + tolerance
-			&& Chassis::positionRight >= mposition - tolerance;
+	return positionRight <= mposition + tolerance
+			&& positionRight >= mposition - tolerance;
 }
 
 // Called once after isFinished returns true

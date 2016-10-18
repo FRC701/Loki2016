@@ -1,4 +1,6 @@
 #include "AutoMoat.h"
+#include "SetLifter.h"
+#include "AutoDrive.h"
 
 AutoMoat::AutoMoat()
 {

@@ -103,7 +103,7 @@ void Chassis::AutoSetUp()
 	right1Wheel->SetEncPosition(0.0);
 }
 
-void Chassis::GetSpeed(string whichWheel)
+double Chassis::GetSpeed(string whichWheel)
 {
 	if(whichWheel == "right")
 		right1Wheel->GetSpeed();
@@ -111,7 +111,7 @@ void Chassis::GetSpeed(string whichWheel)
 		left1Wheel->GetSpeed();
 }
 
-void Chassis::GetPosition(string whichWheel)
+double Chassis::GetPosition(string whichWheel)
 {
 	if(whichWheel == "right")
 			right1Wheel->GetPosition();
@@ -119,7 +119,7 @@ void Chassis::GetPosition(string whichWheel)
 			left1Wheel->GetPosition();
 }
 
-void Chassis::GetEncPosition(string whichWheel)
+double Chassis::GetEncPosition(string whichWheel)
 {
 	if(whichWheel == "right")
 				right1Wheel->GetEncPosition();

@@ -18,6 +18,13 @@ public:
 	void End();
 	void Interrupted();
 private:
+	double speedLeft = Robot::chassis->GetSpeed("left");
+	double speedRight = Robot::chassis->GetSpeed("right");
+	double encPositionLeft = Robot::chassis->GetEncPosition("left");
+	double encPositionRight = Robot::chassis->GetEncPosition("right");
+	double positionLeft = Robot::chassis->GetPosition("left");
+	double positionRight = Robot::chassis->GetPosition("right");
+
 	Direction mdirection;
 	int mposition;
 	int tolerance;

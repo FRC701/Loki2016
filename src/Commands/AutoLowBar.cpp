@@ -1,4 +1,6 @@
 #include "AutoLowBar.h"
+#include "SetLifter.h"
+#include "AutoDrive.h"
 
 AutoLowBar::AutoLowBar()
 {

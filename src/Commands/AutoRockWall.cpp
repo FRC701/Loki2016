@@ -1,4 +1,6 @@
 #include "AutoRockWall.h"
+#include "SetLifter.h"
+#include "AutoDrive.h"
 
 AutoRockWall::AutoRockWall()
 {

@@ -10,7 +10,12 @@
 
 
 #include "Robot.h"
-#include "../Commands/AutoRampart.h"
+#include "Commands/AutoRampart.h"
+#include "Commands/AutoLowBar.h"
+#include "Commands/AutoRockWall.h"
+#include "Commands/AutoMoat.h"
+#include "Commands/AutoDrive.h"
+#include "Commands/AutoLowGoalShoot.h"
 
 std::shared_ptr<Chassis> Robot::chassis;
 std::unique_ptr<OI> Robot::oi;
@@ -45,7 +50,7 @@ void Robot::RobotInit() {
 		chooser->AddObject("Portcullis/Cheval de Frise", new AutoDrive(AutoDrive::Reach));
 		chooser->AddObject("Reach", new AutoDrive(AutoDrive::Reach));
 		chooser->AddDefault("Do Nothing", new AutoDrive(AutoDrive::DoNothing));
-		chooser->AddObject("LowBarShoot", new AutoLowBarShoot());
+		chooser->AddObject("LowBarShoot", new AutoLowGoalShoot());
 		SmartDashboard::PutData("Autonomous modes", chooser.get());
 
 	autonomousCommand.reset(new AutonomousCommand());
