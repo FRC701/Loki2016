@@ -1,11 +1,12 @@
 #include "FullIntake.h"
 #include "SetArms.h"
+#include "SetLifter.h"
 #include "IntakeOn.h"
 #include "ShooterControl.h"
 #include "RollerOn.h"
 
-FullIntake::FullIntake(double speed)
-: mSpeed(speed)
+FullIntake::FullIntake(double direction)
+: mDirection(direction)
 {
 	Requires(Robot::intake.get());
 	Requires(Robot::shooter.get());
@@ -21,8 +22,10 @@ FullIntake::FullIntake(double speed)
 	// Command1 and Command2 will run in parallel.
 
 	AddSequential(new SetArms(Intake::kDown));
-	AddParallel(new IntakeOn(mSpeed));
-	AddSequential(new ShooterControl(mSpeed, mSpeed));
+	AddSequential(new SetLifter(Shooter::kDown));
+	AddParallel(new ShooterControl(1.0 *mDirection, 1.0 *mDirection));
+	AddSequential(new IntakeOn(0.5 *mDirection));
+
 
 	// A command group will require all of the subsystems that each member
 	// would require.

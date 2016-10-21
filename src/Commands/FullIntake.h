@@ -7,10 +7,10 @@
 class FullIntake: public CommandGroup
 {
 public:
-	FullIntake(double speed);
+	FullIntake(double direction);
 
 private:
-	double mSpeed;
+	double mDirection;
 };
 
 #endif

@@ -5,8 +5,8 @@
 
 PrepShooter::PrepShooter(double speed)
 {
-	Requires(Robot::intake.get());
-	Requires(Robot::shooter.get());
+	//Requires(Robot::intake.get());
+	//Requires(Robot::shooter.get());
 	mSpeed = speed;
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
@@ -20,8 +20,8 @@ PrepShooter::PrepShooter(double speed)
 	// Command1 and Command2 will run in parallel.
 
 	AddSequential(new SetArms(Intake::kDown));
-	AddParallel(new SetLifter(Shooter::kUp));
-	AddParallel(new ShooterControl(mSpeed, 0.0));
+	AddSequential(new SetLifter(Shooter::kUp));
+	AddSequential(new ShooterControl(1.0, 0.0));
 
 
 	// A command group will require all of the subsystems that each member
