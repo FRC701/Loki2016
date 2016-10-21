@@ -96,3 +96,41 @@ bool Chassis::IsBrakeOn()
 {
 	return right1Wheel->GetBrakeEnableDuringNeutral() == static_cast<CANTalon::NeutralMode>(kBrake);
 }
+
+void Chassis::AutoSetUp()
+{
+	left1Wheel->SetControlMode(CANTalon::kPosition);
+	right1Wheel->SetControlMode(CANTalon::kPosition);
+	left1Wheel->SetEncPosition(0.0);
+	right1Wheel->SetEncPosition(0.0);
+}
+
+double Chassis::GetSpeed(string whichWheel)
+{
+	if(whichWheel == "right")
+		right1Wheel->GetSpeed();
+	else
+		left1Wheel->GetSpeed();
+}
+
+double Chassis::GetPosition(string whichWheel)
+{
+	if(whichWheel == "right")
+			right1Wheel->GetPosition();
+		else
+			left1Wheel->GetPosition();
+}
+
+double Chassis::GetEncPosition(string whichWheel)
+{
+	if(whichWheel == "right")
+				right1Wheel->GetEncPosition();
+			else
+				left1Wheel->GetEncPosition();
+}
+
+void Chassis::GeneralSetUp()
+{
+	left1Wheel->SetControlMode(CANTalon::kPercentVbus);
+	right1Wheel->SetControlMode(CANTalon::kPercentVbus);
+}

@@ -12,8 +12,10 @@
 #ifndef CHASSIS_H
 #define CHASSIS_H
 #include "Commands/Subsystem.h"
+#include "../Robot.h"
 #include "WPILib.h"
-#include <string>
+#include <string.h>
+using namespace std;
 
 /**
  *
@@ -44,6 +46,13 @@ public:
 	enum TalonMode {kBrake = CANTalon::kNeutralMode_Brake, kCoast = CANTalon::kNeutralMode_Coast};
 	enum ShifterValue {kHigh = DoubleSolenoid::kReverse, kLow = DoubleSolenoid::kForward };
 
+	double speedLeft = GetSpeed("left");
+	double speedRight = GetSpeed("right");
+	double encPositionLeft = GetEncPosition("left");
+	double encPositionRight = GetEncPosition("right");
+	double positionLeft = GetPosition("left");
+	double positionRight = GetPosition("right");
+
 	// Drive the robot left and right
 	void SetTankDrive(double left, double right);
 
@@ -54,6 +63,16 @@ public:
 	void SetMode(TalonMode mode);
 
 	bool IsBrakeOn();
+
+	void AutoSetUp();
+
+	double GetSpeed(string whichWheel);
+
+	double GetPosition(string whichWheel);
+
+	double GetEncPosition(string whichWheel);
+
+	void GeneralSetUp();
 
 };
 
