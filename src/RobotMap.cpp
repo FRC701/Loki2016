@@ -38,6 +38,11 @@ std::shared_ptr<CANTalon> RobotMap::shooterRoller;
 
 std::shared_ptr<DoubleSolenoid> RobotMap::shooterLifter;
 
+//..........lights..........
+
+std::shared_ptr<Relay> RobotMap::lightsFeature;
+std::shared_ptr<Relay> RobotMap::lightsShooter;
+
 void RobotMap::init() {
 
     LiveWindow *lw = LiveWindow::GetInstance();
@@ -73,6 +78,7 @@ void RobotMap::init() {
 
     intakeArms.reset(new DoubleSolenoid(kArmsF, kArmsR));
     lw->AddActuator("Intake", "Arms", intakeArms);
+
     //..........shooter..........
 
     shooterLeftFlywheel.reset(new CANTalon(kLeftFlywheelID));
@@ -86,4 +92,12 @@ void RobotMap::init() {
 
     shooterLifter.reset(new DoubleSolenoid(kLifterF, kLifterR));
     lw->AddActuator("Shooter", "Lifter", shooterLifter);
+
+    //..........lights..........
+
+    lightsFeature.reset(new Relay(0));
+    lw->AddActuator("Lights", "Feature", lightsFeature);
+
+    lightsShooter.reset(new Relay(1));
+    lw->AddActuator("Lights", "Shooter", lightsShooter);
 }

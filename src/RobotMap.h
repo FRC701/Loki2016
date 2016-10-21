@@ -52,6 +52,11 @@ public:
 
 	static std::shared_ptr<DoubleSolenoid> shooterLifter;
 
+	//..........lights..........
+
+	static std::shared_ptr<Relay> lightsFeature;
+	static std::shared_ptr<Relay> lightsShooter;
+
 //..........IDs..........
 
 	//..........chassis..........
