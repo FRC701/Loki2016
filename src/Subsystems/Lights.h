@@ -7,15 +7,16 @@
 class Lights: public Subsystem
 {
 private:
-	std::shared_ptr<Relay> feature;
-	std::shared_ptr<Relay> shooter;
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+  std::shared_ptr<Relay> feature;
+  std::shared_ptr<Relay> shooter;
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
 public:
-	Lights();
-	void InitDefaultCommand();
+  Lights();
+  void InitDefaultCommand();
 
-	void SetFeatureLights(Relay::Value value);
+  void SetFeatureLights(Relay::Value value);
+  void SetShooterLights(Relay::Value value);
 };
 
 #endif
