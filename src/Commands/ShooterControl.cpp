@@ -18,8 +18,8 @@ void ShooterControl::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
-  Robot::shooter->SetShooter(mShooterSpeed);
   Robot::shooter->SetRoller(mRollerSpeed);
+  Robot::shooter->SetShooter(mShooterSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
