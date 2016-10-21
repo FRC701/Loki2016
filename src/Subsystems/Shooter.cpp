@@ -11,6 +11,8 @@ Shooter::Shooter() :
 {
   rightFlywheel->SetInverted(true);
 
+  roller->ConfigLimitMode(CANTalon::kLimitMode_SrxDisableSwitchInputs);
+
   rightFlywheel->SetControlMode(CANTalon::kFollower);
   rightFlywheel->Set(RobotMap::kLeftFlywheelID);
 
@@ -49,3 +51,7 @@ void Shooter::SetRoller(double speed)
   roller->Set(speed);
 }
 
+bool Shooter::IsRollerClosed() const
+{
+  roller->IsFwdLimitSwitchClosed();
+}

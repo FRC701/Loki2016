@@ -18,8 +18,15 @@ void ShooterControl::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
+  // todo: Simplify this logic
+  if (Robot::shooter->IsRollerClosed())
+    Robot::shooter->SetRoller(mRollerSpeed);
+  else if (! Robot::shooter->IsRollerClosed())
+    Robot::shooter->SetRoller(0.0);
+  else
+    Robot::shooter->SetRoller(mRollerSpeed);
+
   Robot::shooter->SetShooter(mShooterSpeed);
-  Robot::shooter->SetRoller(mRollerSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
