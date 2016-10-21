@@ -13,8 +13,8 @@ Shooter::Shooter() :
 
   roller->ConfigLimitMode(CANTalon::kLimitMode_SrxDisableSwitchInputs);
 
-  rightFlywheel->SetControlMode(CANTalon::kFollower);
-  rightFlywheel->Set(RobotMap::kLeftFlywheelID);
+  //rightFlywheel->SetControlMode(CANTalon::kFollower);
+  //rightFlywheel->Set(RobotMap::kLeftFlywheelID);
 
   lifter->Set(DoubleSolenoid::kOff);
 
