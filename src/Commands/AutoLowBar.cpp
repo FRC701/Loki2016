@@ -1,6 +1,8 @@
 #include "AutoLowBar.h"
 #include "SetLifter.h"
 #include "AutoDrive.h"
+#include "SetShifter.h"
+#include "SetArms.h"
 
 AutoLowBar::AutoLowBar()
 {
@@ -15,9 +17,8 @@ AutoLowBar::AutoLowBar()
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-//	AddSequential(new SetShifter(Chassis::kLow));
-//	AddSequential(new SetArms(Intake::kLow));
-//	AddSequential(new IntakeCounter(10));
+	AddSequential(new SetShifter(Chassis::kLow));
+	AddSequential(new SetArms(Intake::kDown));
 	AddSequential(new SetLifter(Shooter::kDown));
 	AddSequential(new AutoDrive(AutoDrive::LowBar));
 

@@ -3,7 +3,7 @@
 #include "AutoDrive.h"
 #include "AutoTurn.h"
 #include "ShooterControl.h"
-//#include "RollerOn.h"
+#include "SetArms.h"
 
 AutoLowGoalShoot::AutoLowGoalShoot()
 {
@@ -18,12 +18,12 @@ AutoLowGoalShoot::AutoLowGoalShoot()
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-//	AddSequential(new SetArms(Intake::kUp));
+	AddSequential(new SetArms(Intake::kUp));
 	AddSequential(new SetLifter(Shooter::kDown));
 	AddSequential(new AutoDrive(AutoDrive::LowBar));
 	AddSequential(new AutoTurn(AutoTurn::turnLeft, 600));
-	AddSequential(new ShooterControl(1.0));
-//	AddSequential(new RollerOn(1.0));
+	AddSequential(new ShooterControl(1.0, 1.0));
+
 
 	// A command group will require all of the subsystems that each member
 	// would require.

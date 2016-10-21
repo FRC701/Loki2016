@@ -1,6 +1,9 @@
 #include "AutoRockWall.h"
 #include "SetLifter.h"
 #include "AutoDrive.h"
+#include "SetShifter.h"
+#include "SetArms.h"
+#include "PopBall.h"
 
 AutoRockWall::AutoRockWall()
 {
@@ -15,12 +18,12 @@ AutoRockWall::AutoRockWall()
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-//	AddSequential(new SetShifter(Chassis::kLow));
+	AddSequential(new SetShifter(Chassis::kLow));
 	AddSequential(new SetLifter(Shooter::kUp));
-//	AddSequential(new SetArms(Intake::kUp));
+	AddSequential(new SetArms(Intake::kUp));
 	AddSequential(new AutoDrive(AutoDrive::Cross));
-//	AddSequential(new PopBall());
-	AddSequential(new AutoDrive(AutoDrive::LowBar));
+	AddSequential(new PopBall());
+//	AddSequential(new AutoDrive(AutoDrive::LowBar));
 
 	// A command group will require all of the subsystems that each member
 	// would require.

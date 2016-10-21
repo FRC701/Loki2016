@@ -1,7 +1,7 @@
 #include "AutoRampart.h"
-//#include "SetShifter.h"
+#include "SetShifter.h"
 #include "SetLifter.h"
-//#include "SetArms.h"
+#include "SetArms.h"
 #include "AutoDrive.h"
 
 AutoRampart::AutoRampart()
@@ -17,9 +17,9 @@ AutoRampart::AutoRampart()
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-//	AddSequential(new SetShifter(Chassis::kLow));
+	AddSequential(new SetShifter(Chassis::kLow));
 	AddSequential(new SetLifter(Shooter::kUp));
-//	AddSequential(new SetArms(Intake::kUp));
+	AddSequential(new SetArms(Intake::kUp));
 	AddSequential(new AutoDrive(AutoDrive::Cross));
 
 	// A command group will require all of the subsystems that each member
