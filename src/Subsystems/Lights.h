@@ -17,6 +17,8 @@ public:
 
 	void SetFeatureLights(Relay::Value value);
 
+	void SetShooterLights(Relay::Value value);
+
 };
 
 #endif

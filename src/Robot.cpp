@@ -73,10 +73,10 @@ void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 
 	if(Robot::shooter->IsRollerClosed())
-		Robot::lights->SetFeatureLights(Relay::kForward);
+		Robot::lights->SetShooterLights(Relay::kForward);
 
 	else
-		Robot::lights->SetFeatureLights(Relay::kOff);
+		Robot::lights->SetShooterLights(Relay::kOff);
 
 }
 

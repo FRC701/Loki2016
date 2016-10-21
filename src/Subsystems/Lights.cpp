@@ -22,3 +22,8 @@ void Lights::SetFeatureLights(Relay::Value value)
 {
 	feature->Set(value);
 }
+
+void Lights::SetShooterLights(Relay::Value value)
+{
+	shooter->Set(value);
+}
