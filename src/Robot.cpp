@@ -74,8 +74,10 @@ void Robot::TeleopPeriodic() {
 
 	if(Robot::shooter->IsRollerClosed())
 		Robot::lights->SetFeatureLights(Relay::kForward);
+
 	else
 		Robot::lights->SetFeatureLights(Relay::kOff);
+
 }
 
 void Robot::TestPeriodic() {
