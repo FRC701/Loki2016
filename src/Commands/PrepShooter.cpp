@@ -3,10 +3,11 @@
 #include "ShooterControl.h"
 #include "SetArms.h"
 
+// todo: remove mSpeed
 PrepShooter::PrepShooter(double speed)
 : mSpeed(speed)
 {
   AddSequential(new SetArms(Intake::kDown));
-  AddParallel(new SetLifter(Shooter::kUp));
-  AddParallel(new ShooterControl(mSpeed, 0.0));
+  AddSequential(new SetLifter(Shooter::kUp));
+  AddSequential(new ShooterControl(speed, 0.0));
 }
