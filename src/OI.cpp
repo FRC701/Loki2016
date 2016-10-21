@@ -1,20 +1,20 @@
 #include "OI.h"
 
-#include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCommand.h"
-#include "Commands/TankDrive.h"
-#include "Commands/ToggleShifter.h"
-#include "Commands/IntakeOn.h"
-#include "Commands/ToggleLifter.h"
-#include "Commands/PrepShooter.h"
-#include "Commands/ToggleArms.h"
-#include "Commands/RollerOn.h"
-#include "Commands/ToggleBrake.h"
-#include "Commands/FullIntake.h"
 #include "Commands/Cancel.h"
-#include "Commands/PrepShooter.h"
+#include "Commands/FullIntake.h"
+#include "Commands/IntakeOn.h"
 #include "Commands/LowGoalShoot.h"
+#include "Commands/PrepShooter.h"
+#include "Commands/RollerOn.h"
+#include "Commands/SetLifter.h"
 #include "Commands/ShooterControl.h"
+#include "Commands/TankDrive.h"
+#include "Commands/ToggleArms.h"
+#include "Commands/ToggleBrake.h"
+#include "Commands/ToggleLifter.h"
+#include "Commands/ToggleShifter.h"
+#include "SmartDashboard/SmartDashboard.h"
 
 OI::OI() {
   // Process operator interface input here.
@@ -24,13 +24,13 @@ OI::OI() {
   dA->WhenPressed(new AutonomousCommand());
 
   dB.reset(new JoystickButton(driver.get(), kButtonB_ID));
-  dB->WhenPressed(new AutonomousCommand());
+  dB->WhenPressed(new Cancel());
 
   dX.reset(new JoystickButton(driver.get(), kButtonX_ID));
   dX->WhenPressed(new AutonomousCommand());
 
   dY.reset(new JoystickButton(driver.get(), kButtonY_ID));
-  dY->WhenPressed(new AutonomousCommand());
+  dY->WhenPressed(new SetLifter(Shooter::kUp));
 
   dLB.reset(new JoystickButton(driver.get(), kButtonLB_ID));
   dLB->WhenPressed(new AutonomousCommand());
@@ -56,10 +56,10 @@ OI::OI() {
   coA->WhenPressed(new ToggleLifter());
 
   coB.reset(new JoystickButton(coDriver.get(), kButtonB_ID));
-  coB->WhenPressed(new AutonomousCommand());
+  coB->WhenPressed(new Cancel());
 
   coX.reset(new JoystickButton(coDriver.get(), kButtonX_ID));
-  coX->WhenPressed(new FullIntake(-1.0));
+  coX->WhenPressed(new FullIntake(-1.0));     //-1 is for in
 
   coY.reset(new JoystickButton(coDriver.get(), kButtonY_ID));
   coY->WhenPressed(new PrepShooter(1.0));
@@ -88,6 +88,10 @@ OI::OI() {
   SmartDashboard::PutData("ToggleShifter", new ToggleShifter());
   SmartDashboard::PutData("ToggleLifter", new ToggleLifter());
   SmartDashboard::PutData("ToggleArms", new ToggleArms());
+  SmartDashboard::PutData("LowGoalShoot", new LowGoalShoot());
+  SmartDashboard::PutData("RollerOn", new ShooterControl(0.0,1.0));
+  SmartDashboard::PutData("PrepShooter", new PrepShooter(1.0));
+  SmartDashboard::PutData("FullIntakeIn", new FullIntake(-1.0));
 
   // SmartDashboard Buttons
   SmartDashboard::PutData("TankDrive", new TankDrive());
