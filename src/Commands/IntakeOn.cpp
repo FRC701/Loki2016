@@ -24,9 +24,9 @@ void IntakeOn::Execute()
 bool IntakeOn::IsFinished()
 {
 	if(mSpeed > 0)
-		return Robot::shooter->IsRollerClosed();
-	else if(mSpeed < 0)
 		return ! Robot::shooter->IsRollerClosed();
+	else if(mSpeed < 0)
+		return Robot::shooter->IsRollerClosed();
 
 	return false;
 }

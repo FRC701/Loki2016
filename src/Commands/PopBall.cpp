@@ -1,8 +1,9 @@
 #include "PopBall.h"
 #include "SetLifter.h"
 #include "SetArms.h"
-#include "ShooterControl.h"
+#include "ShooterIntake.h"
 #include "RollerOn.h"
+#include "Delay.h"
 
 PopBall::PopBall()
 {
@@ -20,8 +21,10 @@ PopBall::PopBall()
 	// Command1 and Command2 will run in parallel.
 
 	AddSequential(new SetLifter(Shooter::kUp));
-	AddParallel(new SetArms(Intake::kDown));
-	AddSequential(new ShooterControl(1.0, 1.0));
+	AddSequential(new SetArms(Intake::kDown));
+	AddSequential(new Delay(1.0));
+	AddSequential(new ShooterIntake(1.0, 1.0));
+
 
 	// A command group will require all of the subsystems that each member
 	// would require.

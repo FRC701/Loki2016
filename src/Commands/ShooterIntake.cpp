@@ -24,10 +24,21 @@ void ShooterIntake::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterIntake::IsFinished()
 {
+	static int count = 0;
 	if(mShooterSpeed > 0)
-		return Robot::shooter->IsRollerClosed();
+	{
+		if(count > 10) {
+			bool open = ! Robot::shooter->IsRollerClosed();
+			if(open)
+				count = 0;
+			return open;
+		}
+
+		else
+			count++;
+	}
 	else if(mShooterSpeed < 0)
-		return ! Robot::shooter->IsRollerClosed();
+		return Robot::shooter->IsRollerClosed();
 
 	return false;
 }
