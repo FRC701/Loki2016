@@ -1,15 +1,11 @@
-#include "FullIntake.h"
+#include "AutonomousGeneral.h"
 #include "SetArms.h"
-#include "SetLifter.h"
-#include "IntakeOn.h"
-#include "ShooterControl.h"
-#include "RollerOn.h"
+#include "AutoDrive.h"
+#include "AutoTankDrive.h"
+#include "SetShifter.h"
 
-FullIntake::FullIntake(double direction)
-: mDirection(direction)
+AutonomousGeneral::AutonomousGeneral()
 {
-	Requires(Robot::intake.get());
-	Requires(Robot::shooter.get());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -21,10 +17,11 @@ FullIntake::FullIntake(double direction)
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
+	//AddSequential(new SetMode(Chassis::kBrake));
 	AddSequential(new SetArms(Intake::kDown));
-	AddSequential(new SetLifter(Shooter::kDown));
-	AddParallel(new ShooterControl(1.0 *mDirection, 1.0 *mDirection));
-	AddSequential(new IntakeOn(0.75 *mDirection));
+	AddSequential(new AutoTankDrive(5.0, -0.9, -0.9));
+
+//	AddSequential(new AutoDrive(AutoDrive::Cross));
 
 
 	// A command group will require all of the subsystems that each member
