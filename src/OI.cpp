@@ -75,7 +75,7 @@ coDriver.reset(new Joystick(1));
     coB->WhenPressed(new Cancel());
 
     coX.reset(new JoystickButton(coDriver.get(), kButtonX_ID));
-    coX->WhileHeld(new FullIntake(-1.0));			//-1 is for in
+    coX->WhenPressed(new FullIntake(-1.0));			//-1 is for in
 
     coY.reset(new JoystickButton(coDriver.get(), kButtonY_ID));
     coY->WhenPressed(new PrepShooter(1.0));		    //the number is not being used for testing
