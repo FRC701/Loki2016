@@ -5,6 +5,7 @@
 #include "Commands/FullIntake.h"
 #include "Commands/IntakeOn.h"
 #include "Commands/LowGoalShoot.h"
+#include "Commands/PopBall.h"
 #include "Commands/PrepShooter.h"
 #include "Commands/RollerOn.h"
 #include "Commands/SetLifter.h"
@@ -77,7 +78,7 @@ OI::OI() {
   coStart->WhenPressed(new AutonomousCommand());
 
   coL3.reset(new JoystickButton(coDriver.get(), kButtonL3_ID));
-  coL3->WhenPressed(new ToggleBrake());
+  coL3->WhenPressed(new PopBall());
 
   coR3.reset(new JoystickButton(coDriver.get(), kButtonR3_ID));
   coR3->WhenPressed(new LowGoalShoot());

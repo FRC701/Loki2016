@@ -1,45 +1,46 @@
-#include "IntakeOn.h"
+#include "ShooterIntake.h"
 
-IntakeOn::IntakeOn(double speed)
-: mSpeed(speed)
+ShooterIntake::ShooterIntake(double shooterSpeed, double rollerSpeed)
+: mShooterSpeed(shooterSpeed), mRollerSpeed(rollerSpeed)
 {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(chassis);
-  Requires(Robot::intake.get());
+  Requires(Robot::shooter.get());
 }
 
 // Called just before this Command runs the first time
-void IntakeOn::Initialize()
+void ShooterIntake::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void IntakeOn::Execute()
+void ShooterIntake::Execute()
 {
-  Robot::intake->SetIntake(mSpeed);
+  Robot::shooter->SetRoller(mRollerSpeed);
+  Robot::shooter->SetShooter(mShooterSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool IntakeOn::IsFinished()
+bool ShooterIntake::IsFinished()
 {
-  if(mSpeed > 0)
+  if(mShooterSpeed > 0)
     return Robot::shooter->IsRollerClosed();
-  else if(mSpeed < 0)
+  else if(mShooterSpeed < 0)
     return ! Robot::shooter->IsRollerClosed();
 
   return false;
 }
 
 // Called once after isFinished returns true
-void IntakeOn::End()
+void ShooterIntake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void IntakeOn::Interrupted()
+void ShooterIntake::Interrupted()
 {
 
 }
