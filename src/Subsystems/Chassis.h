@@ -2,13 +2,11 @@
 #define CHASSIS_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-#include <string>
 
 class Chassis: public Subsystem {
 private:
   // It's desirable that everything possible is private except
   // for methods that implement subsystem capabilities
-
   std::shared_ptr<CANTalon> left1Wheel;
   std::shared_ptr<CANTalon> left2Wheel;
   std::shared_ptr<CANTalon> left3Wheel;
@@ -18,6 +16,15 @@ private:
 
   std::shared_ptr<DoubleSolenoid> shifter;
   std::shared_ptr<DoubleSolenoid> kickstand;
+
+  double kPLeft;
+  double kPRight;
+
+  double kILeft;
+  double kIRight;
+
+  double kDLeft;
+  double kDRight;
 
 public:
   Chassis();
@@ -36,6 +43,23 @@ public:
   void SetMode(TalonMode mode);
 
   bool IsBrakeOn() const;
+
+  void AutoSetUp();
+
+  double GetSpeedLeft();
+
+  double GetPositionLeft();
+
+  double GetEncPositionLeft();
+
+  void GeneralSetUp();
+
+  double GetSpeedRight();
+
+  double GetPositionRight();
+
+  double GetEncPositionRight();
+
 
 };
 

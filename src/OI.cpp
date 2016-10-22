@@ -45,10 +45,10 @@ OI::OI() {
   dStart->WhenPressed(new AutonomousCommand());
 
   dL3.reset(new JoystickButton(driver.get(), kButtonL3_ID));
-  dL3->WhenPressed(new ToggleBrake());
+  dL3->WhenPressed(new ToggleShifter());
 
   dR3.reset(new JoystickButton(driver.get(), kButtonR3_ID));
-  dR3->WhenPressed(new ToggleShifter());
+  dR3->WhenPressed(new ToggleBrake());
 
   coDriver.reset(new Joystick(1));
 
@@ -59,7 +59,7 @@ OI::OI() {
   coB->WhenPressed(new Cancel());
 
   coX.reset(new JoystickButton(coDriver.get(), kButtonX_ID));
-  coX->WhenPressed(new FullIntake(-1.0));     //-1 is for in
+  coX->WhileHeld(new FullIntake(-1.0));     //-1 is for in
 
   coY.reset(new JoystickButton(coDriver.get(), kButtonY_ID));
   coY->WhenPressed(new PrepShooter(1.0));

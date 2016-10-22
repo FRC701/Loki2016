@@ -11,5 +11,5 @@ FullIntake::FullIntake(double direction)
   AddSequential(new SetArms(Intake::kDown));
   AddSequential(new SetLifter(Shooter::kDown));
   AddParallel(new ShooterControl(1.0 *mDirection, 1.0 *mDirection));
-  AddSequential(new IntakeOn(0.5 *mDirection));
+  AddSequential(new IntakeOn(0.75 *mDirection));
 }
