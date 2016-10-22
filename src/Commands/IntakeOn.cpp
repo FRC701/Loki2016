@@ -23,10 +23,11 @@ void IntakeOn::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeOn::IsFinished()
 {
-  if(mSpeed > 0)
-    return Robot::shooter->IsRollerClosed();
-  else if(mSpeed < 0)
-    return ! Robot::shooter->IsRollerClosed();
+  // todo: refactor to be a logical return
+	if (mSpeed > 0)
+		return ! Robot::shooter->IsRollerClosed();
+	else if (mSpeed < 0)
+		return Robot::shooter->IsRollerClosed();
 
   return false;
 }

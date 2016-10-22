@@ -1,11 +1,14 @@
 #include "PopBall.h"
-#include "SetLifter.h"
+
+#include "Delay.h"
 #include "SetArms.h"
-#include "ShooterControl.h"
+#include "SetLifter.h"
+#include "ShooterIntake.h"
 
 PopBall::PopBall()
 {
-  AddSequential(new SetLifter(Shooter::kUp));
-  AddParallel(new SetArms(Intake::kDown));
-  AddSequential(new ShooterControl(1.0, 1.0));
+	AddSequential(new SetLifter(Shooter::kUp));
+	AddSequential(new SetArms(Intake::kDown));
+	AddSequential(new Delay(1.0));
+	AddSequential(new ShooterIntake(1.0, 1.0));
 }
