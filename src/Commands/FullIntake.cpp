@@ -2,7 +2,7 @@
 #include "SetArms.h"
 #include "SetLifter.h"
 #include "IntakeOn.h"
-#include "ShooterControl.h"
+#include "ShooterIntake.h"
 #include "RollerOn.h"
 
 FullIntake::FullIntake(double direction)
@@ -23,19 +23,9 @@ FullIntake::FullIntake(double direction)
 
 	AddSequential(new SetArms(Intake::kDown));
 	AddSequential(new SetLifter(Shooter::kDown));
+	AddParallel(new ShooterIntake(1.0 *mDirection, 1.0 *mDirection));
+	AddSequential(new IntakeOn(0.75 *mDirection));
 
-
-	if(Robot::shooter->IsRollerClosed())
-	{
-		AddParallel(new ShooterControl(1.0 *mDirection, 1.0 *mDirection));
-		AddSequential(new IntakeOn(0.75 *mDirection));
-	}
-
-	else
-	{
-		AddParallel(new ShooterControl(0.0,0.0));
-		AddSequential(new IntakeOn(0.0));
-	}
 
 	// A command group will require all of the subsystems that each member
 	// would require.
