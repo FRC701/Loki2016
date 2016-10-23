@@ -68,7 +68,7 @@ void Robot::TeleopPeriodic() {
 
   // todo: Simplify this logic
   // todo: Make this a command
-  if (Robot::shooter->IsRollerClosed())
+  if(Robot::shooter->IsRollerClosed())
     Robot::lights->SetShooterLights(Relay::kForward);
   else
     Robot::lights->SetShooterLights(Relay::kOff);
