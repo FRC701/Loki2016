@@ -76,6 +76,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 
+	//Robot::lights->SetShooterLights(Relay::kForward);
+
 	if(Robot::shooter->IsRollerClosed())
 		Robot::lights->SetShooterLights(Relay::kForward);
 

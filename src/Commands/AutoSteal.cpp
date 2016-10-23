@@ -1,11 +1,12 @@
-#include "AutonomousGeneral.h"
+#include "AutoSteal.h"
 #include "SetArms.h"
 #include "AutoDrive.h"
-#include "AutoTankDrive.h"
+#include "AutoStealTankDrive.h"
 #include "SetShifter.h"
 #include "SetBrake.h"
+#include "FullIntake.h"
 
-AutonomousGeneral::AutonomousGeneral()
+AutoSteal::AutoSteal()
 {
 	Requires(Robot::chassis.get());
 	Requires(Robot::intake.get());
@@ -20,12 +21,9 @@ AutonomousGeneral::AutonomousGeneral()
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-	AddSequential(new SetBrake(Chassis::kBrake));
 	AddSequential(new SetArms(Intake::kDown));
-	AddSequential(new AutoTankDrive(3.0, -0.9, -0.9));
-
-//	AddSequential(new AutoDrive(AutoDrive::Cross));
-
+	AddParallel(new AutoStealTankDrive(0.5, 0.5));
+	AddSequential(new FullIntake(-1.0));
 
 	// A command group will require all of the subsystems that each member
 	// would require.
