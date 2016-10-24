@@ -41,18 +41,20 @@ void AutoStealTankDrive::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool AutoStealTankDrive::IsFinished()
 {
-	return equal || timer.HasPeriodPassed(0.25);
+	return equal || timer.HasPeriodPassed(5);
 }
 
 // Called once after isFinished returns true
 void AutoStealTankDrive::End()
 {
-
+	timer.Stop();
+	timer.Reset();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AutoStealTankDrive::Interrupted()
 {
-
+	timer.Stop();
+	timer.Reset();
 }
