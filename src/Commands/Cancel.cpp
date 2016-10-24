@@ -2,7 +2,7 @@
 #include "IntakeOn.h"
 #include "ShooterControl.h"
 #include "RollerOn.h"
-
+//
 Cancel::Cancel()
 {
 	Requires(Robot::intake.get());
@@ -18,8 +18,8 @@ Cancel::Cancel()
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-	AddSequential(new IntakeOn(0.0));
-	AddParallel(new ShooterControl(0.0, 0.0));
+	AddParallel(new IntakeOn(0.0));
+	AddSequential(new ShooterControl(0.0, 0.0));
 
 
 
