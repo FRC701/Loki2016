@@ -1,6 +1,6 @@
-#include "ShooterControl.h"
+#include "ShooterIntake.h"
 
-ShooterControl::ShooterControl(double shooterSpeed, double rollerSpeed)
+ShooterIntake::ShooterIntake(double shooterSpeed, double rollerSpeed)
 : mShooterSpeed(shooterSpeed), mRollerSpeed(rollerSpeed)
 {
 	// Use Requires() here to declare subsystem dependencies
@@ -9,33 +9,49 @@ ShooterControl::ShooterControl(double shooterSpeed, double rollerSpeed)
 }
 
 // Called just before this Command runs the first time
-void ShooterControl::Initialize()
+void ShooterIntake::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterControl::Execute()
+void ShooterIntake::Execute()
 {
 	Robot::shooter->SetRoller(mRollerSpeed);
 	Robot::shooter->SetShooter(mShooterSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterControl::IsFinished()
+bool ShooterIntake::IsFinished()
 {
+	static int count = 0;
+	if(mShooterSpeed > 0)
+	{
+		if(count > 10) {
+			bool open = ! Robot::shooter->IsRollerClosed();
+			if(open)
+				count = 0;
+			return open;
+		}
+
+		else
+			count++;
+	}
+	else if(mShooterSpeed < 0)
+		return Robot::shooter->IsRollerClosed();
+
 	return false;
 }
 
 // Called once after isFinished returns true
-void ShooterControl::End()
+void ShooterIntake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShooterControl::Interrupted()
+void ShooterIntake::Interrupted()
 {
 
 }

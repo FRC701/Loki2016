@@ -27,8 +27,9 @@ std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
 
 //.........intake..........
 
-std::shared_ptr<CANTalon> RobotMap::intakeHorizontalBands;
-std::shared_ptr<CANTalon> RobotMap::intakeVerticalBands;
+std::shared_ptr<CANTalon> RobotMap::intakeMecanumWheels;
+std::shared_ptr<DoubleSolenoid> RobotMap::intakeArms;
+
 //..........shooter..........
 
 std::shared_ptr<CANTalon> RobotMap::shooterLeftFlywheel;
@@ -37,10 +38,10 @@ std::shared_ptr<CANTalon> RobotMap::shooterRoller;
 
 std::shared_ptr<DoubleSolenoid> RobotMap::shooterLifter;
 
-//..........arms..........
+//..........lights..........
 
-std::shared_ptr<CANTalon> RobotMap::armsLeftBrazo;
-std::shared_ptr<CANTalon> RobotMap::armsRightBrazo;
+std::shared_ptr<Relay> RobotMap::lightsFeature;
+std::shared_ptr<Relay> RobotMap::lightsShooter;
 
 void RobotMap::init() {
 
@@ -70,16 +71,13 @@ void RobotMap::init() {
     chassisShifter.reset(new DoubleSolenoid(kShifterF,kShifterR));
     lw->AddActuator("Chassis", "Shifter", chassisShifter);
 
-    chassisKickstand.reset(new DoubleSolenoid(kKickstandF,kKickstandR));
-    lw->AddActuator("Chassis", "Kickstand", chassisKickstand);
-
     //..........intake.......
 
-    intakeHorizontalBands.reset(new CANTalon(kHoriBandsID));
-    lw->AddActuator("Intake", "HorizontalBands", intakeHorizontalBands);
+    intakeMecanumWheels.reset(new CANTalon(kMecanumWheelsID));
+    lw->AddActuator("Intake", "MecanumWheels", intakeMecanumWheels);
 
-    intakeVerticalBands.reset(new CANTalon(kVerBandsID));
-    lw->AddActuator("Intake", "VerticalBands", intakeVerticalBands);
+    intakeArms.reset(new DoubleSolenoid(kArmsF, kArmsR));
+    lw->AddActuator("Intake", "Arms", intakeArms);
 
     //..........shooter..........
 
@@ -95,11 +93,11 @@ void RobotMap::init() {
     shooterLifter.reset(new DoubleSolenoid(kLifterF, kLifterR));
     lw->AddActuator("Shooter", "Lifter", shooterLifter);
 
-    //..........arms..........
+    //..........lights..........
 
-    armsLeftBrazo.reset(new CANTalon (kLeftBrazo));
-    lw->AddActuator("Arms", "LeftBrazo", armsLeftBrazo);
+    lightsFeature.reset(new Relay(0));
+    lw->AddActuator("Lights", "Feature", lightsFeature);
 
-    armsRightBrazo.reset(new CANTalon (kRightBrazo));
-    lw->AddActuator("Arms", "RightBrazo", armsRightBrazo);
+    lightsShooter.reset(new Relay(1));
+    lw->AddActuator("Lights", "Shooter", lightsShooter);
 }

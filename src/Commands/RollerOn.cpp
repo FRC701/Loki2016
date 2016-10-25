@@ -1,7 +1,7 @@
-#include "ShooterControl.h"
+#include "RollerOn.h"
 
-ShooterControl::ShooterControl(double shooterSpeed, double rollerSpeed)
-: mShooterSpeed(shooterSpeed), mRollerSpeed(rollerSpeed)
+RollerOn::RollerOn(double speed)
+: mSpeed(speed)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
@@ -9,33 +9,32 @@ ShooterControl::ShooterControl(double shooterSpeed, double rollerSpeed)
 }
 
 // Called just before this Command runs the first time
-void ShooterControl::Initialize()
+void RollerOn::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterControl::Execute()
+void RollerOn::Execute()
 {
-	Robot::shooter->SetRoller(mRollerSpeed);
-	Robot::shooter->SetShooter(mShooterSpeed);
+	Robot::shooter->SetRoller(mSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterControl::IsFinished()
+bool RollerOn::IsFinished()
 {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ShooterControl::End()
+void RollerOn::End()
 {
-
+	Robot::shooter->SetRoller(0.0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShooterControl::Interrupted()
+void RollerOn::Interrupted()
 {
-
+	Robot::shooter->SetRoller(0.0);
 }

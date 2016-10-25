@@ -1,6 +1,6 @@
 #include "Shooter.h"
 #include "../RobotMap.h"
-#include "../Commands/DefaultShooter.h"
+#include "../Commands/ShooterControl.h"
 
 Shooter::Shooter() :
   Subsystem("Shooter"),
@@ -11,8 +11,10 @@ Shooter::Shooter() :
 {
   rightFlywheel->SetInverted(true);
 
-  rightFlywheel->SetControlMode(CANTalon::kFollower);
-  rightFlywheel->Set(RobotMap::kLeftFlywheelID);
+  roller->ConfigLimitMode(CANTalon::kLimitMode_SrxDisableSwitchInputs);
+
+  //rightFlywheel->SetControlMode(CANTalon::kFollower);
+  //rightFlywheel->Set(RobotMap::kLeftFlywheelID);
 
   lifter->Set(DoubleSolenoid::kOff);
 
@@ -20,7 +22,7 @@ Shooter::Shooter() :
 
 void Shooter::InitDefaultCommand()
 {
-	SetDefaultCommand(new DefaultShooter());
+	SetDefaultCommand(new ShooterControl(0.0, 0.0));
 }
 
 // Put methods for controlling this subsystem
@@ -49,3 +51,7 @@ void Shooter::SetRoller(double speed)
 	roller->Set(speed);
 }
 
+bool Shooter::IsRollerClosed() const
+{
+	roller->IsFwdLimitSwitchClosed();
+}

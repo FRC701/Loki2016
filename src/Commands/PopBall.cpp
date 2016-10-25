@@ -1,13 +1,14 @@
-#include "PrepShooter.h"
+#include "PopBall.h"
 #include "SetLifter.h"
-#include "ShooterControl.h"
 #include "SetArms.h"
+#include "ShooterIntake.h"
+#include "RollerOn.h"
+#include "Delay.h"
 
-PrepShooter::PrepShooter(double speed)
+PopBall::PopBall()
 {
-	//Requires(Robot::intake.get());
-	//Requires(Robot::shooter.get());
-	mSpeed = speed;
+	Requires(Robot::intake.get());
+	Requires(Robot::shooter.get());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -19,9 +20,10 @@ PrepShooter::PrepShooter(double speed)
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-	AddSequential(new SetArms(Intake::kDown));
 	AddSequential(new SetLifter(Shooter::kUp));
-	AddSequential(new ShooterControl(1.0, 0.0));
+	AddSequential(new SetArms(Intake::kDown));
+	AddSequential(new Delay(1.0));
+	AddSequential(new ShooterIntake(1.0, 1.0));
 
 
 	// A command group will require all of the subsystems that each member

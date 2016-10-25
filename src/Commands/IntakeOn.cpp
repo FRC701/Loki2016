@@ -1,11 +1,11 @@
 #include "IntakeOn.h"
 
-IntakeOn::IntakeOn(double horizontalSpeed, double verticalSpeed)
+IntakeOn::IntakeOn(double Speed)
 {
-	mHorizontalSpeed = horizontalSpeed;
-	mVerticalSpeed = verticalSpeed;
+	mSpeed = Speed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::intake.get());
 }
 
 // Called just before this Command runs the first time
@@ -17,12 +17,17 @@ void IntakeOn::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void IntakeOn::Execute()
 {
-	Robot::intake->SetIntake(mHorizontalSpeed,mVerticalSpeed);
+	Robot::intake->SetIntake(mSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeOn::IsFinished()
 {
+	if(mSpeed > 0)
+		return ! Robot::shooter->IsRollerClosed();
+	else if(mSpeed < 0)
+		return Robot::shooter->IsRollerClosed();
+
 	return false;
 }
 

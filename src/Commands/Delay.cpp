@@ -1,41 +1,41 @@
-#include "ArmLevel.h"
+#include "Delay.h"
 
-ArmLevel::ArmLevel(Arms::ArmLevelPosition position)
-: mPosition(position),
-  count(0)
+Delay::Delay(double time)
+: mTime(time)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 }
 
 // Called just before this Command runs the first time
-void ArmLevel::Initialize()
+void Delay::Initialize()
 {
-	Robot::arms->ArmLevelSetUp();
-	count = 0;
+	timer.Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmLevel::Execute()
+void Delay::Execute()
 {
-	Robot::arms->SetArmLevel(mPosition);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmLevel::IsFinished()
+bool Delay::IsFinished()
 {
-	return true;
+	return timer.HasPeriodPassed(mTime);
 }
 
 // Called once after isFinished returns true
-void ArmLevel::End()
+void Delay::End()
 {
-
+	timer.Stop();
+	timer.Reset();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmLevel::Interrupted()
+void Delay::Interrupted()
 {
-
+	timer.Stop();
+	timer.Reset();
 }

@@ -1,42 +1,42 @@
-#include "ToggleKickstand.h"
+#include "ToggleBrake.h"
 
-ToggleKickstand::ToggleKickstand()
+ToggleBrake::ToggleBrake()
 {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
+	// eg.
 	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void ToggleKickstand::Initialize()
+void ToggleBrake::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ToggleKickstand::Execute()
+void ToggleBrake::Execute()
 {
-	Chassis::KickstandValue value
-		= Robot::chassis->IsKickstandIn() ? Chassis::kOut : Chassis::kIn;
-	Robot::chassis->SetKickstand(value);
+Chassis::TalonMode mode
+	= Robot::chassis->IsBrakeOn() ? Chassis::kCoast : Chassis::kBrake;
+Robot::chassis->SetMode(mode);
 
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ToggleKickstand::IsFinished()
+bool ToggleBrake::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ToggleKickstand::End()
+void ToggleBrake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ToggleKickstand::Interrupted()
+void ToggleBrake::Interrupted()
 {
 
 }

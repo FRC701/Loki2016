@@ -1,21 +1,18 @@
-#ifndef ArmOn_H
-#define ArmOn_H
+#ifndef ToggleBrake_H
+#define ToggleBrake_H
 
+#include "Commands/Subsystem.h"
 #include "../Robot.h"
-#include "WPILib.h"
 
-class ArmOn: public Command
+class ToggleBrake: public Command
 {
 public:
-	ArmOn(double speed);
+	ToggleBrake();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
-
-private:
-	double mspeed;
 };
 
 #endif

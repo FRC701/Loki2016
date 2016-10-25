@@ -1,40 +1,40 @@
-#include "DefaultShooter.h"
+#include "SetShifter.h"
 
-DefaultShooter::DefaultShooter()
+SetShifter::SetShifter(Chassis::ShifterValue shifterValue)
+: mShifterValue(shifterValue)
 {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-	Requires(Robot::shooter.get());
+	// eg.
+	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void DefaultShooter::Initialize()
+void SetShifter::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DefaultShooter::Execute()
+void SetShifter::Execute()
 {
-	Robot::shooter->SetShooter(0.0);
-	Robot::shooter->SetRoller(0.0);
+	Robot::chassis->SetShifter(mShifterValue);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DefaultShooter::IsFinished()
+bool SetShifter::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
-void DefaultShooter::End()
+void SetShifter::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DefaultShooter::Interrupted()
+void SetShifter::Interrupted()
 {
 
 }

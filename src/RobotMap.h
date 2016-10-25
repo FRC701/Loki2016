@@ -40,8 +40,9 @@ public:
 
 	//...........intake........
 
-	static std::shared_ptr<CANTalon> intakeHorizontalBands;
-	static std::shared_ptr<CANTalon> intakeVerticalBands;
+	static std::shared_ptr<CANTalon> intakeMecanumWheels;
+
+	static std::shared_ptr<DoubleSolenoid> intakeArms;
 
 	//..........shooter..........
 
@@ -51,12 +52,12 @@ public:
 
 	static std::shared_ptr<DoubleSolenoid> shooterLifter;
 
+	//..........lights..........
+
+	static std::shared_ptr<Relay> lightsFeature;
+	static std::shared_ptr<Relay> lightsShooter;
+
 //..........IDs..........
-
-	//..........arms..........
-
-	static std::shared_ptr<CANTalon> armsLeftBrazo;
-	static std::shared_ptr<CANTalon> armsRightBrazo;
 
 	//..........chassis..........
 
@@ -69,14 +70,13 @@ public:
 
 	static const int kShifterF = 0;
 	static const int kShifterR = 3;
-	static const int kKickstandF = 4;
-	static const int kKickstandR = 6;
 
 	//...........intake........
 
-	static const int kHoriBandsID = 7;
-	static const int kVerBandsID = 8;
+	static const int kMecanumWheelsID = 8;
 
+	static const int kArmsF = 4;
+	static const int kArmsR = 6;
 
 	//..........shooter..........
 
@@ -86,18 +86,7 @@ public:
 	static const int kLifterF = 1;
 	static const int kLifterR = 2;
 
-	//..........arms..........
 
-	static std::shared_ptr<CANTalon> armLeft;
-	static std::shared_ptr<CANTalon> armRight;
-
-	//..........arms..........
-
-	static const int kLeftBrazo  = 20;
-	static const int kRightBrazo = 21;
-
-
-	//.........Buttons.....
 	static void init();
 
 

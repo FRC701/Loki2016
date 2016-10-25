@@ -1,41 +1,42 @@
-#include "ShooterControl.h"
+#include "ToggleArms.h"
 
-ShooterControl::ShooterControl(double shooterSpeed, double rollerSpeed)
-: mShooterSpeed(shooterSpeed), mRollerSpeed(rollerSpeed)
+ToggleArms::ToggleArms()
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
-	Requires(Robot::shooter.get());
+
+	Requires(Robot::intake.get());
 }
 
 // Called just before this Command runs the first time
-void ShooterControl::Initialize()
+void ToggleArms::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ShooterControl::Execute()
+void ToggleArms::Execute()
 {
-	Robot::shooter->SetRoller(mRollerSpeed);
-	Robot::shooter->SetShooter(mShooterSpeed);
+Intake::ArmsValue value
+	= Robot::intake->IsArmUp() ? Intake::kDown: Intake::kUp;
+Robot::intake->SetArms(value);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ShooterControl::IsFinished()
+bool ToggleArms::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
-void ShooterControl::End()
+void ToggleArms::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ShooterControl::Interrupted()
+void ToggleArms::Interrupted()
 {
 
 }

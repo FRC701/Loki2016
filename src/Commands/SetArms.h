@@ -1,13 +1,14 @@
-#ifndef IntakeOn_H
-#define IntakeOn_H
+#ifndef SetArms_H
+#define SetArms_H
 
 #include "Commands/Subsystem.h"
+#include "../Subsystems/Intake.h"
 #include "../Robot.h"
 
-class IntakeOn: public Command
+class SetArms: public Command
 {
 public:
-	IntakeOn(double speed);
+	SetArms(Intake::ArmsValue armsValue);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,7 +16,7 @@ public:
 	void Interrupted();
 
 private:
-	double mSpeed;
+	Intake::ArmsValue mArmsValue;
 };
 
 #endif

@@ -1,41 +1,40 @@
-#include "ArmOn.h"
+#include "SetBrake.h"
 
-ArmOn::ArmOn(double speed)
+SetBrake::SetBrake(Chassis::TalonMode mode)
+: mMode(mode)
 {
-mspeed = speed;
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
-	Requires(Robot::arms.get());
+	// eg.
+	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void ArmOn::Initialize()
+void SetBrake::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmOn::Execute()
+void SetBrake::Execute()
 {
- Robot::arms->ArmsOn(mspeed);
+	Robot::chassis->SetMode(mMode);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmOn::IsFinished()
+bool SetBrake::IsFinished()
 {
-
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
-void ArmOn::End()
+void SetBrake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmOn::Interrupted()
+void SetBrake::Interrupted()
 {
 
 }

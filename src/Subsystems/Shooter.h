@@ -28,7 +28,7 @@ public:
 
 	void SetRoller(double speed);
 
-
+	bool IsRollerClosed() const;
 
 
 };

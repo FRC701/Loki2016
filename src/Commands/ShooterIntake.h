@@ -1,13 +1,13 @@
-#ifndef ShooterControl_H
-#define ShooterControl_H
+#ifndef ShooterIntake_H
+#define ShooterIntake_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class ShooterControl: public Command
+class ShooterIntake: public Command
 {
 public:
-	ShooterControl(double shooterSpeed, double rollerSpeed);
+	ShooterIntake(double shooterSpeed, double rollerSpeed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -17,7 +17,6 @@ public:
 private:
 	double mShooterSpeed;
 	double mRollerSpeed;
-
 };
 
 #endif

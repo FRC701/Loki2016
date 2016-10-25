@@ -1,13 +1,14 @@
-#include "PrepShooter.h"
-#include "SetLifter.h"
-#include "ShooterControl.h"
+#include "AutonomousGeneral.h"
 #include "SetArms.h"
+#include "AutoDrive.h"
+#include "AutoTankDrive.h"
+#include "SetShifter.h"
+#include "SetBrake.h"
 
-PrepShooter::PrepShooter(double speed)
+AutonomousGeneral::AutonomousGeneral()
 {
-	//Requires(Robot::intake.get());
-	//Requires(Robot::shooter.get());
-	mSpeed = speed;
+	Requires(Robot::chassis.get());
+	Requires(Robot::intake.get());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -19,9 +20,11 @@ PrepShooter::PrepShooter(double speed)
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
+	AddSequential(new SetBrake(Chassis::kBrake));
 	AddSequential(new SetArms(Intake::kDown));
-	AddSequential(new SetLifter(Shooter::kUp));
-	AddSequential(new ShooterControl(1.0, 0.0));
+	AddSequential(new AutoTankDrive(3.0, -0.9, -0.9));
+
+//	AddSequential(new AutoDrive(AutoDrive::Cross));
 
 
 	// A command group will require all of the subsystems that each member

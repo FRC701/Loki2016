@@ -1,13 +1,14 @@
-#ifndef IntakeOn_H
-#define IntakeOn_H
+#ifndef RollerOn_H
+#define RollerOn_H
 
 #include "Commands/Subsystem.h"
+#include "../Subsystems/Shooter.h"
 #include "../Robot.h"
 
-class IntakeOn: public Command
+class RollerOn: public Command
 {
 public:
-	IntakeOn(double speed);
+	RollerOn(double speed);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

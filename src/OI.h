@@ -29,6 +29,19 @@ private:
 	std::shared_ptr<JoystickButton> dStart;
 	std::shared_ptr<JoystickButton> dBack;
 
+	std::shared_ptr<Joystick> coDriver;
+
+	std::shared_ptr<JoystickButton> coA;
+	std::shared_ptr<JoystickButton> coB;
+	std::shared_ptr<JoystickButton> coX;
+	std::shared_ptr<JoystickButton> coY;
+	std::shared_ptr<JoystickButton> coLB;
+	std::shared_ptr<JoystickButton> coRB;
+	std::shared_ptr<JoystickButton> coL3;
+	std::shared_ptr<JoystickButton> coR3;
+	std::shared_ptr<JoystickButton> coStart;
+	std::shared_ptr<JoystickButton> coBack;
+
 
 	public:
 	OI();

@@ -7,6 +7,7 @@ SetLifter::SetLifter(Shooter::LifterValue lifterValue)
 
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::shooter.get());
 }
 
 // Called just before this Command runs the first time
@@ -24,6 +25,7 @@ void SetLifter::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool SetLifter::IsFinished()
 {
+	// Watch the sensors or timeout
 	return true;
 }
 

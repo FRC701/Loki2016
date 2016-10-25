@@ -1,13 +1,13 @@
-#ifndef IntakeOn_H
-#define IntakeOn_H
+#ifndef SetBrake_H
+#define SetBrake_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class IntakeOn: public Command
+class SetBrake: public Command
 {
 public:
-	IntakeOn(double speed);
+	SetBrake(Chassis::TalonMode mode);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,7 +15,7 @@ public:
 	void Interrupted();
 
 private:
-	double mSpeed;
+	Chassis::TalonMode mMode;
 };
 
 #endif
