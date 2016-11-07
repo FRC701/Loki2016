@@ -40,28 +40,28 @@ OI::OI() {
 driver.reset(new Joystick(0));
 
     dA.reset(new JoystickButton(driver.get(), kButtonA_ID));
-    dA->WhenPressed(new AutonomousCommand());
+    dA->WhenPressed(new ToggleLifter());
 
     dB.reset(new JoystickButton(driver.get(), kButtonB_ID));
     dB->WhenPressed(new Cancel());
 
     dX.reset(new JoystickButton(driver.get(), kButtonX_ID));
-    dX->WhenPressed(new AutonomousCommand());
+    dX->WhenPressed(new FullIntake(-1.0));
 
     dY.reset(new JoystickButton(driver.get(), kButtonY_ID));
-    dY->WhenPressed(new SetLifter(Shooter::kUp));
+    dY->WhenPressed(new PrepShooter(1.0));
 
     dLB.reset(new JoystickButton(driver.get(), kButtonLB_ID));
-    dLB->WhenPressed(new AutonomousCommand());
+    dLB->WhenPressed(new ToggleArms());
 
     dRB.reset(new JoystickButton(driver.get(), kButtonRB_ID));
-    dRB->WhenPressed(new RollerOn(1.0));
+    dRB->WhileHeld(new ShooterControl(0.0,1.0));
 
     dBack.reset(new JoystickButton(driver.get(), kButtonBack_ID));
-    dBack->WhenPressed(new AutonomousCommand());
+    dBack->WhileHeld(new LowGoalShoot());
 
     dStart.reset(new JoystickButton(driver.get(), kButtonStart_ID));
-    dStart->WhenPressed(new AutonomousCommand());
+    dStart->WhenPressed(new PopBall());
 
     dL3.reset(new JoystickButton(driver.get(), kButtonL3_ID));
     dL3->WhenPressed(new ToggleShifter());
@@ -69,6 +69,7 @@ driver.reset(new Joystick(0));
     dR3.reset(new JoystickButton(driver.get(), kButtonR3_ID));
     dR3->WhenPressed(new ToggleBrake());
 
+    /*
 coDriver.reset(new Joystick(1));
 
     coA.reset(new JoystickButton(coDriver.get(), kButtonA_ID));
@@ -101,6 +102,7 @@ coDriver.reset(new Joystick(1));
     coR3.reset(new JoystickButton(coDriver.get(), kButtonR3_ID));
     coR3->WhenPressed(new LowGoalShoot());
 
+*/
     // SmartDashboard Buttons
     SmartDashboard::PutData("TankDrive", new TankDrive());
     SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());
