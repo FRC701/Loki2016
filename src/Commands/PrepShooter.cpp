@@ -1,7 +1,6 @@
 #include "PrepShooter.h"
 #include "SetLifter.h"
 #include "ShooterControl.h"
-#include "SetArms.h"
 
 PrepShooter::PrepShooter(double speed)
 {
@@ -17,7 +16,7 @@ PrepShooter::PrepShooter(double speed)
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 
-	AddSequential(new SetArms(Intake::kDown));
+	// TODO Intake Arm Level
 	AddSequential(new SetLifter(Shooter::kUp));
 	AddSequential(new ShooterControl(mSpeed));
 

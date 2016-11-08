@@ -6,7 +6,6 @@ Intake::Intake() : Subsystem("Intake"){
 
 mecanumWheels = RobotMap::intakeMecanumWheels;
 
-arms = RobotMap::intakeArms;
 }
 
 void Intake::InitDefaultCommand()
@@ -22,14 +21,4 @@ void Intake::InitDefaultCommand()
 void Intake::SetIntake(double speed)
 {
 	Robot::intake->mecanumWheels->Set(speed);
-}
-
-void Intake::SetArms(ArmsValue value)
-{
-	arms->Set(static_cast<DoubleSolenoid::Value>(value));
-}
-
-bool Intake::IsArmUp() const
-{
-	return arms->Get() == static_cast<DoubleSolenoid::Value>(kUp);
 }
