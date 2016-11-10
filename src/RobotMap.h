@@ -37,26 +37,6 @@ public:
 	static std::shared_ptr<DoubleSolenoid> chassisShifter;
 	static std::shared_ptr<DoubleSolenoid> chassisKickstand;
 
-
-	//...........intake........
-
-	static std::shared_ptr<CANTalon> intakeMecanumWheels;
-
-	static std::shared_ptr<DoubleSolenoid> intakeArms;
-
-	//..........shooter..........
-
-	static std::shared_ptr<CANTalon> shooterLeftFlywheel;
-	static std::shared_ptr<CANTalon> shooterRightFlywheel;
-	static std::shared_ptr<CANTalon> shooterRoller;
-
-	static std::shared_ptr<DoubleSolenoid> shooterLifter;
-
-	//..........lights..........
-
-	static std::shared_ptr<Relay> lightsFeature;
-	static std::shared_ptr<Relay> lightsShooter;
-
 //..........IDs..........
 
 	//..........chassis..........
@@ -70,21 +50,6 @@ public:
 
 	static const int kShifterF = 0;
 	static const int kShifterR = 3;
-
-	//...........intake........
-
-	static const int kMecanumWheelsID = 8;
-
-	static const int kArmsF = 4;
-	static const int kArmsR = 6;
-
-	//..........shooter..........
-
-	static const int kLeftFlywheelID = 11;
-	static const int kRightFlywheelID = 12;
-	static const int kRollerID = 13;
-	static const int kLifterF = 1;
-	static const int kLifterR = 2;
 
 
 	static void init();
