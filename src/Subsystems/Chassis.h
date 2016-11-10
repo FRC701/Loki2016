@@ -51,6 +51,22 @@ public:
 	double GetPositionRight();
 	double GetEncPositionRight();
 
+	double GetRightP();
+	double GetRightI();
+	double GetRightD();
+
+	double GetLeftP();
+	double GetLeftI();
+	double GetLeftD();
+
+	double SetRightP();
+	double SetRightI();
+	double SetRightD();
+
+	double SetLeftP();
+	double SetLeftI();
+	double SetLeftD();
+
 	//..................Solenoids.................
 	void SetShifter(ShifterValue value);
 	bool IsShifterHigh();

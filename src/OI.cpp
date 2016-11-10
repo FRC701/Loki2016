@@ -7,6 +7,7 @@
 OI::OI() {
     // Process operator interface input here.
 	driver.reset(new Joystick(0));
+
 }
 
 std::shared_ptr<Joystick> OI::getDriver() {

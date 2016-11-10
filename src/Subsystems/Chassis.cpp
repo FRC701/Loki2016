@@ -16,6 +16,10 @@ Chassis::Chassis() : Subsystem("Chassis") {
     kickstand = RobotMap::chassisKickstand;
 
     GeneralSetUp();
+
+    SmartDashboard::PutNumber("RightP", kPRight);
+    SmartDashboard::PutNumber("LeftP", kPLeft);
+
 }
 
 void Chassis::InitDefaultCommand() {
@@ -122,6 +126,67 @@ double Chassis::GetEncPositionRight()
 {
 	return right1Wheel->GetEncPosition();
 }
+
+double Chassis::GetRightP()
+{
+	return right1Wheel->GetP();
+}
+
+double Chassis::GetRightI()
+{
+	return right1Wheel->GetI();
+}
+
+double Chassis::GetRightD()
+{
+	return right1Wheel->GetD();
+}
+
+double Chassis::GetLeftP()
+{
+	return left1Wheel->GetP();
+}
+
+double Chassis::GetLeftI()
+{
+	return left1Wheel->GetI();
+}
+
+double Chassis::GetLeftD()
+{
+	return left1Wheel->GetD();
+}
+
+double Chassis::SetRightP()
+{
+	return right1Wheel->SetP(kPRight);
+}
+
+double Chassis::GetRightI()
+{
+	return right1Wheel->GetI();
+}
+
+double Chassis::GetRightD()
+{
+	return right1Wheel->GetD();
+}
+
+double Chassis::GetLeftP()
+{
+	return left1Wheel->GetP();
+}
+
+double Chassis::GetLeftI()
+{
+	return left1Wheel->GetI();
+}
+
+double Chassis::GetLeftD()
+{
+	return left1Wheel->GetD();
+}
+
 
 //........................................Solenoid Commands.............................................
 
