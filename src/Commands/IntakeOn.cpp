@@ -1,10 +1,11 @@
 #include "IntakeOn.h"
 
-IntakeOn::IntakeOn(double Speed)
+IntakeOn::IntakeOn(double speed)
+: mSpeed(speed)
 {
-	mSpeed = Speed;
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::intake.get());
 }
 
 // Called just before this Command runs the first time

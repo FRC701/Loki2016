@@ -4,8 +4,8 @@
 #include "SetArms.h"
 
 PrepShooter::PrepShooter(double speed)
+: mSpeed(speed)
 {
-	mSpeed = speed;
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

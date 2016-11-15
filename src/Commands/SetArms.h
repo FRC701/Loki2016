@@ -1,7 +1,7 @@
 #ifndef SetArms_H
 #define SetArms_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Subsystems/Intake.h"
 #include "../Robot.h"
 

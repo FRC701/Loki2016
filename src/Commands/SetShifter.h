@@ -1,7 +1,7 @@
 #ifndef SetShifter_H
 #define SetShifter_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Subsystems/Chassis.h"
 #include "../Robot.h"
 

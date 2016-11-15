@@ -5,6 +5,7 @@ SetShifter::SetShifter(Chassis::ShifterValue shifterValue)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time

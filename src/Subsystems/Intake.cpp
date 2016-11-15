@@ -2,11 +2,11 @@
 #include "../RobotMap.h"
 #include "../Commands/IntakeOn.h"
 #include "../Robot.h"
-Intake::Intake() : Subsystem("Intake"){
+Intake::Intake() : Subsystem("Intake"),
+  mecanumWheels(RobotMap::intakeMecanumWheels),
+  arms(RobotMap::intakeArms)
+{
 
-mecanumWheels = RobotMap::intakeMecanumWheels;
-
-arms = RobotMap::intakeArms;
 }
 
 void Intake::InitDefaultCommand()

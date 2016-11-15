@@ -1,7 +1,7 @@
 #ifndef SetLifter_H
 #define SetLifter_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Subsystems/Shooter.h"
 #include "../Robot.h"
 

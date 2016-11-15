@@ -1,7 +1,7 @@
 #ifndef IntakeOn_H
 #define IntakeOn_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Robot.h"
 
 class IntakeOn: public Command

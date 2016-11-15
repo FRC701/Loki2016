@@ -1,7 +1,7 @@
 #ifndef ToggleShifter_H
 #define ToggleShifter_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Robot.h"
 
 class ToggleShifter: public Command

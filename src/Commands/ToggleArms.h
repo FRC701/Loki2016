@@ -1,7 +1,7 @@
 #ifndef ToggleArms_H
 #define ToggleArms_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Robot.h"
 
 class ToggleArms: public Command
