@@ -7,21 +7,21 @@ std::shared_ptr<Shooter> Robot::shooter;
 
 
 void Robot::RobotInit() {
-	RobotMap::init();
+    RobotMap::init();
 
     chassis.reset(new Chassis());
     intake.reset(new Intake());
     shooter.reset(new Shooter());
 
-	// This MUST be here. If the OI creates Commands (which it very likely
-	// will), constructing it during the construction of CommandBase (from
-	// which commands extend), subsystems are not guaranteed to be
-	// yet. Thus, their requires() statements may grab null pointers. Bad
-	// news. Don't move it.
-	oi.reset(new OI());
+    // This MUST be here. If the OI creates Commands (which it very likely
+    // will), constructing it during the construction of CommandBase (from
+    // which commands extend), subsystems are not guaranteed to be
+    // yet. Thus, their requires() statements may grab null pointers. Bad
+    // news. Don't move it.
+    oi.reset(new OI());
 
-	// instantiate the command used for the autonomous period
-	autonomousCommand.reset(new AutonomousCommand());
+    // instantiate the command used for the autonomous period
+    autonomousCommand.reset(new AutonomousCommand());
   }
 
 /**
@@ -33,33 +33,33 @@ void Robot::DisabledInit(){
 }
 
 void Robot::DisabledPeriodic() {
-	Scheduler::GetInstance()->Run();
+    Scheduler::GetInstance()->Run();
 }
 
 void Robot::AutonomousInit() {
-	if (autonomousCommand.get() != nullptr)
-		autonomousCommand->Start();
+    if (autonomousCommand.get() != nullptr)
+        autonomousCommand->Start();
 }
 
 void Robot::AutonomousPeriodic() {
-	Scheduler::GetInstance()->Run();
+    Scheduler::GetInstance()->Run();
 }
 
 void Robot::TeleopInit() {
-	// This makes sure that the autonomous stops running when
-	// teleop starts running. If you want the autonomous to
-	// continue until interrupted by another command, remove
-	// these lines or comment it out.
-	if (autonomousCommand.get() != nullptr)
-		autonomousCommand->Cancel();
+    // This makes sure that the autonomous stops running when
+    // teleop starts running. If you want the autonomous to
+    // continue until interrupted by another command, remove
+    // these lines or comment it out.
+    if (autonomousCommand.get() != nullptr) 
+        autonomousCommand->Cancel();
 }
 
 void Robot::TeleopPeriodic() {
-	Scheduler::GetInstance()->Run();
+    Scheduler::GetInstance()->Run();
 }
 
 void Robot::TestPeriodic() {
-	lw->Run();
+    lw->Run();
 }
 
 START_ROBOT_CLASS(Robot);
