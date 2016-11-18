@@ -58,7 +58,7 @@ std::shared_ptr<Joystick> OI::getDriver() {
 }
 
 double OI::getDriverLeftAxis() const {
-	return this->driver->GetRawAxis(1);
+	return driver->GetRawAxis(1);
 }
 
 double OI::getDriverRightAxis() const {
