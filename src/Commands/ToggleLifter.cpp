@@ -22,8 +22,6 @@ void ToggleLifter::Execute()
 Shooter::LifterValue value
 	= Robot::shooter->IsLifterUp() ? Shooter::kDown: Shooter::kUp;
 Robot::shooter->SetLifter(value);
-
-
 }
 
 // Make this return true when this Command no longer needs to run execute()

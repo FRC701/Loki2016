@@ -9,15 +9,24 @@ class Intake: public Subsystem
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	std::shared_ptr<CANTalon> horizontalBands;
-	std::shared_ptr<CANTalon> verticalBands;
+
+	std::shared_ptr<CANTalon> mecanumWheels;
+
+	std::shared_ptr<DoubleSolenoid> arms;
 
 public:
 	Intake();
-
-	void SetIntake(double horiSpeed, double vertiSpeed);
-
 	void InitDefaultCommand();
+
+	enum ArmsValue {kUp = DoubleSolenoid::kForward, kDown = DoubleSolenoid::kReverse };
+
+	void SetIntake(double speed);
+
+	bool IsArmUp() const;
+
+	void SetArms(ArmsValue value);
+
+
 };
 
 #endif

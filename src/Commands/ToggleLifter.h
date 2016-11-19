@@ -1,7 +1,7 @@
 #ifndef ToggleLifter_H
 #define ToggleLifter_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Robot.h"
 
 class ToggleLifter: public Command

@@ -1,41 +1,40 @@
-#include "ArmLevel.h"
+#include "SetShifter.h"
 
-ArmLevel::ArmLevel(Arms::ArmLevelPosition position)
-: mPosition(position),
-  count(0)
+SetShifter::SetShifter(Chassis::ShifterValue shifterValue)
+: mShifterValue(shifterValue)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
+	Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void ArmLevel::Initialize()
+void SetShifter::Initialize()
 {
-	Robot::arms->ArmLevelSetUp();
-	count = 0;
+
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmLevel::Execute()
+void SetShifter::Execute()
 {
-	Robot::arms->SetArmLevel(mPosition);
+	Robot::chassis->SetShifter(mShifterValue);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmLevel::IsFinished()
+bool SetShifter::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ArmLevel::End()
+void SetShifter::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmLevel::Interrupted()
+void SetShifter::Interrupted()
 {
 
 }

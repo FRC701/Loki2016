@@ -1,7 +1,7 @@
 #ifndef ShooterControl_H
 #define ShooterControl_H
 
-#include "Commands/Subsystem.h"
+#include "Commands/Command.h"
 #include "../Robot.h"
 
 class ShooterControl: public Command

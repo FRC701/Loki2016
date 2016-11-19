@@ -1,13 +1,13 @@
-#ifndef DefaultShooter_H
-#define DefaultShooter_H
+#ifndef ToggleArms_H
+#define ToggleArms_H
 
+#include "Commands/Command.h"
 #include "../Robot.h"
-#include "WPILib.h"
 
-class DefaultShooter: public Command
+class ToggleArms: public Command
 {
 public:
-	DefaultShooter();
+	ToggleArms();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
