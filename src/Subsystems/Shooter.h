@@ -7,28 +7,28 @@
 class Shooter: public Subsystem
 {
 private:
-	std::shared_ptr<CANTalon> leftFlywheel;
-	std::shared_ptr<CANTalon> rightFlywheel;
-	std::shared_ptr<CANTalon> roller;
+  std::shared_ptr<CANTalon> leftFlywheel;
+  std::shared_ptr<CANTalon> rightFlywheel;
+  std::shared_ptr<CANTalon> roller;
 
-	std::shared_ptr<DoubleSolenoid> lifter;
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
+  std::shared_ptr<DoubleSolenoid> lifter;
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
 public:
-	Shooter();
-	void InitDefaultCommand();
+  Shooter();
+  void InitDefaultCommand();
 
-	enum LifterValue {kUp = DoubleSolenoid::kForward, kDown = DoubleSolenoid::kReverse };
+  enum LifterValue {kUp = DoubleSolenoid::kForward, kDown = DoubleSolenoid::kReverse };
 
-	void SetLifter(LifterValue value);
+  void SetLifter(LifterValue value);
 
-	bool IsLifterUp() const;
+  bool IsLifterUp() const;
 
-	void SetShooter(double speed);
+  void SetShooter(double speed);
 
-	void SetRoller(double speed);
+  void SetRoller(double speed);
 
-
+  bool IsRollerClosed() const;
 
 
 };
