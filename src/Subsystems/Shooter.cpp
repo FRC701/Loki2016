@@ -53,5 +53,5 @@ void Shooter::SetRoller(double speed)
 
 bool Shooter::IsRollerClosed() const
 {
-  roller->IsFwdLimitSwitchClosed();
+  return roller->IsFwdLimitSwitchClosed();
 }
