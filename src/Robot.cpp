@@ -10,6 +10,7 @@
 
 
 #include "Robot.h"
+#include "Smartdashboard/SmartDashboard.h"
 
 std::shared_ptr<Chassis> Robot::chassis;
 std::unique_ptr<OI> Robot::oi;

@@ -1,7 +1,7 @@
 #include "Chassis.h"
 
 #include "../RobotMap.h"
-#include "../Commands/TankDrive.h" //swoosh
+#include "../Commands/TankDrive.h"
 
 Chassis::Chassis()
 : Subsystem("Chassis") {
@@ -16,16 +16,6 @@ Chassis::Chassis()
 
     shifter = RobotMap::chassisShifter;
     kickstand = RobotMap::chassisKickstand;
-
-    //.................SmartDasboard Buttons....................
-    SmartDashboard::PutNumber("RightP", kPRight);
-    SmartDashboard::PutNumber("RightI", kIRight);
-    SmartDashboard::PutNumber("RightD", kDRight);
-
-    SmartDashboard::PutNumber("LeftP", kPLeft);
-    SmartDashboard::PutNumber("LeftI", kILeft);
-    SmartDashboard::PutNumber("LeftD", kDLeft);
-
 }
 
 void Chassis::InitDefaultCommand() {

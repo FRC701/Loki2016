@@ -1,5 +1,5 @@
 #include "TankDrive.h"
-
+#include "../Robot.h"
 
 TankDrive::TankDrive(): Command() {
     // Use requires() here to declare subsystem dependencies
@@ -8,7 +8,7 @@ TankDrive::TankDrive(): Command() {
 
 // Called just before this Command runs the first time
 void TankDrive::Initialize() {
-	Robot::chassis->TeleopSetUp();
+
 }
 
 // Called repeatedly when this Command is scheduled to run
