@@ -1,6 +1,5 @@
 #include "RollerOn.h"
 #include "../Robot.h"
-#include "../Subsystems/Shooter.h"
 
 RollerOn::RollerOn(double speed)
 : mSpeed(speed)
