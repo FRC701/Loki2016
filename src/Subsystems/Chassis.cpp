@@ -3,8 +3,8 @@
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h" //swoosh
 
-Chassis::Chassis() : Subsystem("Chassis") {
-
+Chassis::Chassis()
+: Subsystem("Chassis") {
 	left1Wheel = RobotMap::chassisLeft1Wheel;
     left2Wheel = RobotMap::chassisLeft2Wheel;
     left3Wheel = RobotMap::chassisLeft3Wheel;
@@ -12,13 +12,19 @@ Chassis::Chassis() : Subsystem("Chassis") {
     right2Wheel = RobotMap::chassisRight2Wheel;
     right3Wheel = RobotMap::chassisRight3Wheel;
 
+    InitialSetUp();
+
     shifter = RobotMap::chassisShifter;
     kickstand = RobotMap::chassisKickstand;
 
-    GeneralSetUp();
-
+    //.................SmartDasboard Buttons....................
     SmartDashboard::PutNumber("RightP", kPRight);
+    SmartDashboard::PutNumber("RightI", kIRight);
+    SmartDashboard::PutNumber("RightD", kDRight);
+
     SmartDashboard::PutNumber("LeftP", kPLeft);
+    SmartDashboard::PutNumber("LeftI", kILeft);
+    SmartDashboard::PutNumber("LeftD", kDLeft);
 
 }
 
@@ -32,31 +38,14 @@ void Chassis::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void Chassis::AutoSetUp()
-{
-	//TODO Change auto-talon setup mode
+void Chassis::InitialSetUp() {
+	SetShifter(kHigh);
 
-	left1Wheel->SetControlMode(CANTalon::kPosition);
-	left1Wheel->SetEncPosition(0.0);
-	left1Wheel->SelectProfileSlot(0.0);
-	left1Wheel->SetPID(kPLeft, kILeft, kDLeft);
-
-
-	right1Wheel->SetControlMode(CANTalon::kPosition);
-	right1Wheel->SetEncPosition(0.0);
-	right1Wheel->SelectProfileSlot(0.0);
-	right1Wheel->SetPID(kPRight, kIRight, kDRight);
-
-}
-
-void Chassis::GeneralSetUp()
-{
-	//TODO How general are we making this? Should we have a general for talon settings, then general of robot setup? Look at tank drive t_o_d_o
-
-	left1Wheel->SetControlMode(CANTalon::kPercentVbus);
-	right1Wheel->SetControlMode(CANTalon::kPercentVbus);
+	left1Wheel->SetInverted(false);
+	left1Wheel->ConfigLimitMode(CANTalon::kLimitMode_SrxDisableSwitchInputs);
 
 	right1Wheel->SetInverted(true);
+	right1Wheel->ConfigLimitMode(CANTalon::kLimitMode_SrxDisableSwitchInputs);
 
 	left2Wheel->SetControlMode(CANTalon::kFollower);
 	left2Wheel->Set(RobotMap::kLeft1ID);
@@ -64,139 +53,98 @@ void Chassis::GeneralSetUp()
 	left3Wheel->SetControlMode(CANTalon::kFollower);
 	left3Wheel->Set(RobotMap::kLeft1ID);
 
+	right1Wheel->SelectProfileSlot(VOL_PROFILE);
+	right1Wheel->SetControlMode(CANTalon::kPercentVbus);
+
 	right2Wheel->SetControlMode(CANTalon::kFollower);
 	right2Wheel->Set(RobotMap::kRight1ID);
 
 	right3Wheel->SetControlMode(CANTalon::kFollower);
 	right3Wheel->Set(RobotMap::kRight1ID);
 
-	SetShifter(kHigh);
-
 	SetMode(Chassis::kCoast);
 }
 
+//...........................SetUps.................................
+
+void Chassis::AutoSetUp(){
+	//TODO Change auto-talon setup mode
+
+}
+
+void Chassis::TeleopSetUp() {
+	//TODO Implement
+}
+
 //.................................................Talon Commands.................................................
-void Chassis::SetTankDrive(double left, double right)
-{
+void Chassis::SetTankDrive(double left, double right){
+	if(!isTankDrive) {
+		left1Wheel->SelectProfileSlot(VOL_PROFILE);
+		left1Wheel->SetControlMode(CANTalon::kPercentVbus);
+
+		right1Wheel->SelectProfileSlot(VOL_PROFILE);
+		right1Wheel->SetControlMode(CANTalon::kPercentVbus);
+
+		isTankDrive = true;
+	}
+
 	left1Wheel->Set(left);
 	right1Wheel->Set(right);
 }
 
-void Chassis::SetMode(TalonMode mode)
-{
+void Chassis::setPosition(double leftTarget, double rightTarget) {
+	if(isTankDrive){
+		left1Wheel->SelectProfileSlot(POS_PROFILE);
+		left1Wheel->SetControlMode(CANTalon::kPosition);
+
+		right1Wheel->SelectProfileSlot(POS_PROFILE);
+		right1Wheel->SetControlMode(CANTalon::kPosition);
+
+		isTankDrive = false;
+	}
+
+	left1Wheel->Set(leftTarget);
+	right1Wheel->Set(rightTarget);
+}
+
+void Chassis::setLeftPID(double p, double i, double d){
+	left1Wheel->SetPID(p, i, d);
+}
+
+void Chassis::setRightPID(double p, double i, double d){
+	right1Wheel->SetPID(p, i, d);
+}
+
+void Chassis::enablePID() {
+	left1Wheel->EnableControl();
+	right1Wheel->EnableControl();
+}
+
+void Chassis::disablePID() {
+	left1Wheel->Disable();
+	right1Wheel->Disable();
+}
+
+void Chassis::SetMode(TalonMode mode){
 	left1Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 	left2Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 	left3Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
+
 	right1Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 	right2Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 	right3Wheel->ConfigNeutralMode(static_cast<CANTalon::NeutralMode>(mode));
 }
 
-bool Chassis::IsBrakeOn()
-{
+bool Chassis::IsBrakeOn(){
 	return right1Wheel->GetBrakeEnableDuringNeutral() == static_cast<CANTalon::NeutralMode>(kBrake);
 }
-
-double Chassis::GetSpeedLeft()
-{
-	return left1Wheel->GetSpeed();
-}
-
-double Chassis::GetPositionLeft()
-{
-	return left1Wheel->GetPosition();
-}
-
-double Chassis::GetEncPositionLeft()
-{
-	return left1Wheel->GetEncPosition();
-}
-
-double Chassis::GetSpeedRight()
-{
-	return right1Wheel->GetSpeed();
-}
-
-double Chassis::GetPositionRight()
-{
-	return right1Wheel->GetPosition();
-}
-
-double Chassis::GetEncPositionRight()
-{
-	return right1Wheel->GetEncPosition();
-}
-
-double Chassis::GetRightP()
-{
-	return right1Wheel->GetP();
-}
-
-double Chassis::GetRightI()
-{
-	return right1Wheel->GetI();
-}
-
-double Chassis::GetRightD()
-{
-	return right1Wheel->GetD();
-}
-
-double Chassis::GetLeftP()
-{
-	return left1Wheel->GetP();
-}
-
-double Chassis::GetLeftI()
-{
-	return left1Wheel->GetI();
-}
-
-double Chassis::GetLeftD()
-{
-	return left1Wheel->GetD();
-}
-
-double Chassis::SetRightP()
-{
-	return right1Wheel->SetP(kPRight);
-}
-
-double Chassis::GetRightI()
-{
-	return right1Wheel->GetI();
-}
-
-double Chassis::GetRightD()
-{
-	return right1Wheel->GetD();
-}
-
-double Chassis::GetLeftP()
-{
-	return left1Wheel->GetP();
-}
-
-double Chassis::GetLeftI()
-{
-	return left1Wheel->GetI();
-}
-
-double Chassis::GetLeftD()
-{
-	return left1Wheel->GetD();
-}
-
-
 //........................................Solenoid Commands.............................................
 
-void Chassis::SetShifter(ShifterValue value)
-{
+void Chassis::SetShifter(ShifterValue value){
 	shifter->Set(static_cast<DoubleSolenoid::Value>(value));
 
 }
 
-bool Chassis::IsShifterHigh()
-{
+bool Chassis::IsShifterHigh(){
 	return shifter->Get() == static_cast<DoubleSolenoid::Value>(kHigh);
 }

@@ -27,6 +27,11 @@ private:
 	double kDLeft = 0;
 	double kDRight = 0;
 
+	int POS_PROFILE = 0;
+	int VOL_PROFILE = 0;
+
+	bool isTankDrive = true;
+
 public:
 	Chassis();
 	void InitDefaultCommand();
@@ -34,38 +39,25 @@ public:
 	enum TalonMode {kBrake = CANTalon::kNeutralMode_Brake, kCoast = CANTalon::kNeutralMode_Coast};
 	enum ShifterValue {kHigh = DoubleSolenoid::kReverse, kLow = DoubleSolenoid::kForward };
 
+	//.............SetUp..............
+	void InitialSetUp();
 	void AutoSetUp();
-	void GeneralSetUp();
+	void TeleopSetUp();
 
-	//...................Talons..................
-	// Drive the robot left and right
-	void SetTankDrive(double left, double right);
+	//.....................Sets................
 	void SetMode(TalonMode mode);
 	bool IsBrakeOn();
 
-	double GetSpeedLeft();
-	double GetPositionLeft();
-	double GetEncPositionLeft();
+	void SetTankDrive(double left, double right);
 
-	double GetSpeedRight();
-	double GetPositionRight();
-	double GetEncPositionRight();
+	//........Will be removed and implemented in positionSetUp();
+	void setLeftPID(double p, double i = 0, double d = 0);
+	void setRightPID(double p, double i = 0, double d = 0);
 
-	double GetRightP();
-	double GetRightI();
-	double GetRightD();
+	void setPosition(double leftTarget, double rightTarget);
 
-	double GetLeftP();
-	double GetLeftI();
-	double GetLeftD();
-
-	double SetRightP();
-	double SetRightI();
-	double SetRightD();
-
-	double SetLeftP();
-	double SetLeftI();
-	double SetLeftD();
+	void enablePID();
+	void disablePID();
 
 	//..................Solenoids.................
 	void SetShifter(ShifterValue value);

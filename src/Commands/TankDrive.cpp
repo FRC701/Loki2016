@@ -8,14 +8,14 @@ TankDrive::TankDrive(): Command() {
 
 // Called just before this Command runs the first time
 void TankDrive::Initialize() {
-	Robot::chassis->GeneralSetUp();			//TODO !!!CAUTION!!! The way it is written, this well also reset the solenoids. Not function exsist to reset talon settings alone
+	Robot::chassis->TeleopSetUp();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute() {
 
-	//Robot::chassis->SetTankDrive(Robot::oi->getDriverLeftAxis(), Robot::oi->getDriverRightAxis());
-	Robot::chassis->SetTankDrive(0.0, 0.0);
+	Robot::chassis->SetTankDrive(Robot::oi->getDriverLeftAxis(), Robot::oi->getDriverRightAxis());
+	//Robot::chassis->SetTankDrive(0.0, 0.0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -2,11 +2,14 @@
 
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/TankDrive.h"
+#include "Commands/GoToTarget.h"
 
 
 OI::OI() {
     // Process operator interface input here.
 	driver.reset(new Joystick(0));
+
+	SmartDashboard::PutData("Go to Target", new GoToTarget(14));
 
 }
 

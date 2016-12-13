@@ -53,6 +53,19 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	SmartDashboard::PutNumber("Driver Left Y", oi->getDriverLeftAxis());
+	SmartDashboard::PutNumber("Driver Right Y", oi->getDriverRightAxis());
+
+	SmartDashboard::PutNumber("Left1Wheel Error", RobotMap::chassisLeft1Wheel->Get() - RobotMap::chassisLeft1Wheel->GetEncPosition());
+	SmartDashboard::PutNumber("Right1Wheel Error", RobotMap::chassisRight1Wheel->Get() - RobotMap::chassisRight1Wheel->GetEncPosition());
+
+	SmartDashboard::PutNumber("Left1Wheel Position", RobotMap::chassisLeft1Wheel->GetEncPosition());
+	SmartDashboard::PutNumber("Right1Wheel Position", RobotMap::chassisRight1Wheel->GetEncPosition());
+
+	SmartDashboard::PutNumber("Left1Wheel Target", RobotMap::chassisLeft1Wheel->Get());
+	SmartDashboard::PutNumber("Right1Wheel Target", RobotMap::chassisRight1Wheel->Get());
+
 }
 
 void Robot::TestPeriodic() {
