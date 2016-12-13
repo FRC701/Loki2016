@@ -1,46 +1,41 @@
-#include "ToggleLifter.h"
-#include "../Subsystems/Shooter.h"
+#include "RollerOn.h"
 #include "../Robot.h"
 
-
-ToggleLifter::ToggleLifter()
+RollerOn::RollerOn(double speed)
+: mSpeed(speed)
 {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(chassis);
-
   Requires(Robot::shooter.get());
-
 }
 
 // Called just before this Command runs the first time
-void ToggleLifter::Initialize()
+void RollerOn::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ToggleLifter::Execute()
+void RollerOn::Execute()
 {
-  Shooter::LifterValue value
-    = Robot::shooter->IsLifterUp() ? Shooter::kDown : Shooter::kUp;
-  Robot::shooter->SetLifter(value);
+  Robot::shooter->SetRoller(mSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ToggleLifter::IsFinished()
+bool RollerOn::IsFinished()
 {
-  return true;
+  return false;
 }
 
 // Called once after isFinished returns true
-void ToggleLifter::End()
+void RollerOn::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ToggleLifter::Interrupted()
+void RollerOn::Interrupted()
 {
 
 }

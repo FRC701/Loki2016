@@ -1,17 +1,20 @@
-#ifndef ToggleLifter_H
-#define ToggleLifter_H
+#ifndef RollerOn_H
+#define RollerOn_H
 
 #include "Commands/Command.h"
 
-class ToggleLifter: public Command
+class RollerOn: public Command
 {
 public:
-  ToggleLifter();
+  RollerOn(double speed);
   void Initialize();
   void Execute();
   bool IsFinished();
   void End();
   void Interrupted();
+
+private:
+  double mSpeed;
 };
 
 #endif
