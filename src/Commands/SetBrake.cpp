@@ -1,46 +1,40 @@
-#include "ToggleLifter.h"
-#include "../Subsystems/Shooter.h"
+#include "SetBrake.h"
 #include "../Robot.h"
 
-
-ToggleLifter::ToggleLifter()
+SetBrake::SetBrake(Chassis::TalonMode mode)
+: mMode(mode)
 {
   // Use Requires() here to declare subsystem dependencies
-  // eg. Requires(chassis);
-
-  Requires(Robot::shooter.get());
-
+  // eg.
+  Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void ToggleLifter::Initialize()
+void SetBrake::Initialize()
 {
-
+  Robot::chassis->SetMode(mMode);
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ToggleLifter::Execute()
+void SetBrake::Execute()
 {
-  Shooter::LifterValue value
-    = Robot::shooter->IsLifterUp() ? Shooter::kDown : Shooter::kUp;
-  Robot::shooter->SetLifter(value);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ToggleLifter::IsFinished()
+bool SetBrake::IsFinished()
 {
   return true;
 }
 
 // Called once after isFinished returns true
-void ToggleLifter::End()
+void SetBrake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ToggleLifter::Interrupted()
+void SetBrake::Interrupted()
 {
 
 }

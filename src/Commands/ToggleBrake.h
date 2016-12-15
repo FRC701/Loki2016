@@ -1,12 +1,12 @@
-#ifndef ToggleLifter_H
-#define ToggleLifter_H
+#ifndef ToggleBrake_H
+#define ToggleBrake_H
 
 #include "Commands/Command.h"
 
-class ToggleLifter: public Command
+class ToggleBrake: public Command
 {
 public:
-  ToggleLifter();
+  ToggleBrake();
   void Initialize();
   void Execute();
   bool IsFinished();

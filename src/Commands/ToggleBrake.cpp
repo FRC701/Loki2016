@@ -1,39 +1,41 @@
-#include "SetShifter.h"
+#include "ToggleBrake.h"
+#include "../Subsystems/Chassis.h"
 #include "../Robot.h"
 
-SetShifter::SetShifter(Chassis::ShifterValue shifterValue)
-: mShifterValue(shifterValue)
+ToggleBrake::ToggleBrake()
 {
   Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void SetShifter::Initialize()
+void ToggleBrake::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void SetShifter::Execute()
+void ToggleBrake::Execute()
 {
-  Robot::chassis->SetShifter(mShifterValue);
+  Chassis::TalonMode mode
+    = Robot::chassis->IsBrakeOn() ? Chassis::kCoast : Chassis::kBrake;
+  Robot::chassis->SetMode(mode);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool SetShifter::IsFinished()
+bool ToggleBrake::IsFinished()
 {
   return true;
 }
 
 // Called once after isFinished returns true
-void SetShifter::End()
+void ToggleBrake::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void SetShifter::Interrupted()
+void ToggleBrake::Interrupted()
 {
 
 }
