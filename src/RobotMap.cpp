@@ -10,7 +10,6 @@ std::shared_ptr<CANTalon> RobotMap::chassisRight3Wheel;
 
 //......................Solenoids..........................
 std::shared_ptr<DoubleSolenoid> RobotMap::chassisShifter;
-std::shared_ptr<DoubleSolenoid> RobotMap::chassisKickstand;
 
 void RobotMap::init() {
     //..................Chassis.....................

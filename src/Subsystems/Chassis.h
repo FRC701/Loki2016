@@ -16,7 +16,6 @@ private:
 	std::shared_ptr<CANTalon> right3Wheel;
 
 	std::shared_ptr<DoubleSolenoid> shifter;
-	std::shared_ptr<DoubleSolenoid> kickstand;
 
 	double kPLeft = 0;
 	double kPRight = 0;

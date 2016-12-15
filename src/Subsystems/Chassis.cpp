@@ -15,7 +15,6 @@ Chassis::Chassis()
     InitialSetUp();
 
     shifter = RobotMap::chassisShifter;
-    kickstand = RobotMap::chassisKickstand;
 }
 
 void Chassis::InitDefaultCommand() {
@@ -128,6 +127,7 @@ void Chassis::SetMode(TalonMode mode){
 bool Chassis::IsBrakeOn(){
 	return right1Wheel->GetBrakeEnableDuringNeutral() == static_cast<CANTalon::NeutralMode>(kBrake);
 }
+
 //........................................Solenoid Commands.............................................
 
 void Chassis::SetShifter(ShifterValue value){

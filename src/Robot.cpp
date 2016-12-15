@@ -41,7 +41,7 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-
+	chassis->AutoSetUp();
 }
 
 void Robot::AutonomousPeriodic() {
@@ -49,7 +49,7 @@ void Robot::AutonomousPeriodic() {
 }
 
 void Robot::TeleopInit() {
-
+	chassis->TeleopSetUp();
 }
 
 void Robot::TeleopPeriodic() {
