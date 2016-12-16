@@ -2,6 +2,7 @@
 
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
+#include "CANTalon.h"
 
 Chassis::Chassis()
 : Subsystem("Chassis") {
