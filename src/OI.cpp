@@ -9,8 +9,6 @@ OI::OI() {
     // Process operator interface input here.
 	driver.reset(new Joystick(0));
 
-	SmartDashboard::PutData("Go to Target", new GoToTarget(14));
-
 }
 
 std::shared_ptr<Joystick> OI::getDriver() {

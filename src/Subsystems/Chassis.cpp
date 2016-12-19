@@ -12,7 +12,7 @@ Chassis::Chassis()
     right2Wheel = RobotMap::chassisRight2Wheel;
     right3Wheel = RobotMap::chassisRight3Wheel;
 
-    InitialSetUp();
+    //InitialSetUp();
 
     shifter = RobotMap::chassisShifter;
 }
