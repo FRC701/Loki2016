@@ -1,7 +1,7 @@
 #ifndef FullIntake_H
 #define FullIntake_H
 
-#include "Commands/CommandGroup.h"
+#include <Commands/CommandGroup.h>
 
 class FullIntake: public CommandGroup
 {
