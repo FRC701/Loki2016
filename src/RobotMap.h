@@ -34,6 +34,11 @@ public:
 
 	static std::shared_ptr<DoubleSolenoid> shooterLifter;
 
+	//..........lights..........
+
+	static std::shared_ptr<Relay> lightsFeature;
+	static std::shared_ptr<Relay> lightsShooter;
+
 //..........IDs..........
 
 	//..........chassis..........
@@ -63,6 +68,8 @@ public:
 	static const int kLifterF = 1;
 	static const int kLifterR = 2;
 
+	static const int kFeatureLightsID = 0;
+	static const int kShooterLightsID = 1;
 
 	static void init();
 
