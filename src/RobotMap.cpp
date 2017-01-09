@@ -84,9 +84,9 @@ void RobotMap::init() {
 
     //..........lights..........
 
-    lightsFeature.reset(new Relay(0));
+    lightsFeature.reset(new Relay(kFeatureLightsID));
     lw->AddActuator("Lights", "Feature", lightsFeature);
 
-    lightsShooter.reset(new Relay(1));
+    lightsShooter.reset(new Relay(kShooterLightsID));
     lw->AddActuator("Lights", "Shooter", lightsShooter);
 }

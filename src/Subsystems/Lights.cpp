@@ -3,10 +3,9 @@
 
 Lights::Lights()
   : Subsystem("Lights")
+  , feature(RobotMap::lightsFeature)
+  , shooter(RobotMap::lightsShooter)
 {
-  feature = RobotMap::lightsFeature;
-  shooter = RobotMap::lightsShooter;
-
   SetFeatureLights(Relay::kForward);
 }
 
