@@ -11,8 +11,10 @@ Shooter::Shooter() :
 {
   rightFlywheel->SetInverted(true);
 
-  rightFlywheel->SetControlMode(CANTalon::kFollower);
-  rightFlywheel->Set(RobotMap::kLeftFlywheelID);
+  roller->ConfigLimitMode(CANTalon::kLimitMode_SrxDisableSwitchInputs);
+
+  //rightFlywheel->SetControlMode(CANTalon::kFollower);
+  //rightFlywheel->Set(RobotMap::kLeftFlywheelID);
 
   lifter->Set(DoubleSolenoid::kOff);
 
@@ -20,7 +22,7 @@ Shooter::Shooter() :
 
 void Shooter::InitDefaultCommand()
 {
-	SetDefaultCommand(new ShooterControl(0.0));
+  SetDefaultCommand(new ShooterControl(0.0, 0.0));
 }
 
 // Put methods for controlling this subsystem
@@ -30,22 +32,26 @@ void Shooter::InitDefaultCommand()
 
 void Shooter::SetLifter(LifterValue value)
 {
-	lifter->Set(static_cast<DoubleSolenoid::Value>(value));
+  lifter->Set(static_cast<DoubleSolenoid::Value>(value));
 }
 
 bool Shooter::IsLifterUp() const
 {
-	return lifter->Get() == static_cast<DoubleSolenoid::Value>(kUp);
+  return lifter->Get() == static_cast<DoubleSolenoid::Value>(kUp);
 }
 
 void Shooter::SetShooter(double speed)
 {
-	leftFlywheel->Set(speed);
-	rightFlywheel->Set(speed);
+  leftFlywheel->Set(speed);
+  rightFlywheel->Set(speed);
 }
 
 void Shooter::SetRoller(double speed)
 {
-	roller->Set(speed);
+  roller->Set(speed);
 }
 
+bool Shooter::IsRollerClosed() const
+{
+  return roller->IsFwdLimitSwitchClosed();
+}

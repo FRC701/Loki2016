@@ -1,4 +1,5 @@
 #include "RollerOn.h"
+
 #include "../Robot.h"
 
 RollerOn::RollerOn(double speed)
@@ -30,12 +31,12 @@ bool RollerOn::IsFinished()
 // Called once after isFinished returns true
 void RollerOn::End()
 {
-
+  Robot::shooter->SetRoller(0.0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RollerOn::Interrupted()
 {
-
+  Robot::shooter->SetRoller(0.0);
 }

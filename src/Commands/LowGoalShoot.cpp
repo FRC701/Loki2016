@@ -6,6 +6,6 @@
 LowGoalShoot::LowGoalShoot()
 {
   AddSequential(new SetArms(Intake::kUp));
-  AddParallel(new SetLifter(Shooter::kDown));
-  AddSequential(new ShooterControl(1.0));
+  AddSequential(new SetLifter(Shooter::kDown));
+  AddSequential(new ShooterControl(1.0, 0.0));
 }

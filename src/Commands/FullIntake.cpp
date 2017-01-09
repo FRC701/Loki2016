@@ -1,14 +1,15 @@
 #include "FullIntake.h"
 #include "SetArms.h"
+#include "SetLifter.h"
 #include "IntakeOn.h"
 #include "ShooterControl.h"
-#include "RollerOn.h"
 
-FullIntake::FullIntake(double speed)
-: mSpeed(speed)
+// todo: remove mDirection.
+FullIntake::FullIntake(double direction)
+: mDirection(direction)
 {
   AddSequential(new SetArms(Intake::kDown));
-  AddParallel(new IntakeOn(mSpeed));
-  AddParallel(new ShooterControl(mSpeed));
-  AddParallel(new RollerOn(mSpeed));
+  AddSequential(new SetLifter(Shooter::kDown));
+  AddParallel(new ShooterControl(1.0 *mDirection, 1.0 *mDirection));
+  AddSequential(new IntakeOn(0.5 *mDirection));
 }
