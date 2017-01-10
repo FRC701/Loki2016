@@ -2,6 +2,7 @@
 #define CHASSIS_H
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include <CANTalon.h>
 #include <string>
 
 class Chassis: public Subsystem {

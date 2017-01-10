@@ -1,6 +1,7 @@
 #include "Chassis.h"
 #include "../RobotMap.h"
 #include "../Commands/TankDrive.h"
+#include <CANTalon.h>
 
 Chassis::Chassis() : Subsystem("Chassis"),
   left1Wheel(RobotMap::chassisLeft1Wheel),
